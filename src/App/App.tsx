@@ -1,18 +1,23 @@
 import React from 'react';
-import './app.scss';
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Header from 'src/components/header';
-import AboutMe from 'src/components/about-me';
-import MyWork from 'src/components/ny-work';
+import AboutMe from 'src/sections/about-me';
+import MyWork from 'src/sections/ny-work';
 
 const App: React.FunctionComponent = () => {
-    return (
-        <div className="App">
-            <Header />
-            <AboutMe />
-            <MyWork />
-        </div>
-    );
+  return (
+    <div className="overflow-y-hidden">
+      <Header />
+      <div className="flex flex-col h-full">
+        <AboutMe />
+        <MyWork />
+      </div>
+      <ToastContainer />
+    </div>
+  );
 };
 
 export default App;

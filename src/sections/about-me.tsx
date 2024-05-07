@@ -22,7 +22,7 @@ const AboutMe: React.FunctionComponent = () => {
                         See Work
                     </p>
                     <img
-                        className="ml-2 w-[13px] h-[13px]"
+                        className="ml-2 w-[15px] h-[15px]"
                         src={Icons.arrowRight}
                     />
                 </button>
