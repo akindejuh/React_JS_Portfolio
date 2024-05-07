@@ -4,7 +4,7 @@ import { Icons } from 'src/assets/icons/_icons';
 import { Images } from 'src/assets/images/_images';
 import { ref, getDownloadURL } from '@firebase/storage';
 import { fb_storage } from 'src/configs/firebase';
-import { loadingToast, errorToast } from 'src/handlers/toast';
+import { errorToast } from 'src/handlers/toast';
 import { downloadFile } from 'src/utils/file-saver';
 
 const Header: React.FunctionComponent = () => {

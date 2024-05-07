@@ -6,10 +6,9 @@ import {
   updateLoadingToastToSuccess,
 } from 'src/handlers/toast';
 
-// eslint-disable-next-line no-undef
 interface IDownloadFile {
-  file_url: string; // eslint-disable-line no-undef
-  file_name: string; // eslint-disable-line no-undef
+  file_url: string;
+  file_name: string;
 }
 
 const downloadFile = async ({
