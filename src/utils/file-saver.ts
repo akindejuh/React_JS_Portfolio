@@ -6,9 +6,10 @@ import {
   updateLoadingToastToSuccess,
 } from 'src/handlers/toast';
 
+// eslint-disable-next-line no-undef
 interface IDownloadFile {
-  file_url: string;
-  file_name: string;
+  file_url: string; // eslint-disable-line no-undef
+  file_name: string; // eslint-disable-line no-undef
 }
 
 const downloadFile = async ({
@@ -17,9 +18,7 @@ const downloadFile = async ({
 }: IDownloadFile): Promise<void> => {
   try {
     loadingToast({ message: 'Downloading...' });
-    const response = await axios({
-      url: file_url,
-      method: 'GET',
+    const response = await axios.get(file_url, {
       responseType: 'blob',
     });
 
