@@ -1,6 +1,10 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { saveAs } from 'file-saver';
-import { errorToast, successToast } from 'src/handlers/toast';
+import {
+  loadingToast,
+  updateLoadingToastToError,
+  updateLoadingToastToSuccess,
+} from 'src/handlers/toast';
 
 interface IDownloadFile {
   file_url: string;
@@ -12,20 +16,25 @@ const downloadFile = async ({
   file_name,
 }: IDownloadFile): Promise<void> => {
   try {
-    await axios({
+    loadingToast({ message: 'Downloading...' });
+    const response = await axios({
       url: file_url,
       method: 'GET',
       responseType: 'blob',
-    })
-      .then(async response => {
-        await saveAs(response.data, file_name);
-        successToast({ message: 'File Downloaded!' });
-      })
-      .catch((error: string) => {
-        errorToast({ message: error });
-      });
-  } catch (err) {
-    errorToast({ message: (err as any)?.message });
+    });
+
+    if (response && response.data) {
+      saveAs(response.data, file_name);
+      updateLoadingToastToSuccess({ message: 'File Downloaded!' });
+    } else {
+      updateLoadingToastToError({ message: 'Failed to download file' });
+    }
+  } catch (error) {
+    let errorMessage = 'An error occurred while downloading the file';
+    if (axios.isAxiosError(error)) {
+      errorMessage = error.response?.data?.message || errorMessage;
+    }
+    updateLoadingToastToError({ message: errorMessage });
   }
 };
 

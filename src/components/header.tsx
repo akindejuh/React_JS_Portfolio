@@ -4,7 +4,7 @@ import { Icons } from 'src/assets/icons/_icons';
 import { Images } from 'src/assets/images/_images';
 import { ref, getDownloadURL } from '@firebase/storage';
 import { fb_storage } from 'src/configs/firebase';
-import { errorToast } from 'src/handlers/toast';
+import { loadingToast, errorToast } from 'src/handlers/toast';
 import { downloadFile } from 'src/utils/file-saver';
 
 const Header: React.FunctionComponent = () => {
@@ -30,8 +30,8 @@ const Header: React.FunctionComponent = () => {
         .then(async url => {
           await downloadFile({ file_url: url, file_name: 'Akindeju_CV.pdf' });
         })
-        .catch(_error => {
-          errorToast({ message: 'Error downloading File!' });
+        .catch(error => {
+          error && errorToast({ message: 'Error downloading File!' });
         });
     } catch (err) {
       errorToast({ message: (err as any)?.message });

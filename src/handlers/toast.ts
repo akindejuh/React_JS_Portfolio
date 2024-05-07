@@ -4,6 +4,8 @@ interface IToast {
   message: string;
 }
 
+const loadingToastId = 'loadingToast';
+
 const errorToast = ({ message }: IToast) => {
   toast.error(message, {
     position: 'top-right',
@@ -30,4 +32,55 @@ const successToast = ({ message }: IToast) => {
   });
 };
 
-export { errorToast, successToast };
+const infoToast = ({ message }: IToast) => {
+  toast.info(message, {
+    position: 'top-right',
+    autoClose: 4000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: false,
+    progress: undefined,
+    theme: 'light',
+  });
+};
+
+const loadingToast = ({ message }: Partial<IToast>) => {
+  toast.info(message || 'Loading...', {
+    position: 'top-right',
+    autoClose: 4000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: false,
+    theme: 'light',
+    isLoading: true,
+  });
+};
+
+const updateLoadingToastToError = ({ message }: IToast) => {
+  toast.update(loadingToastId, {
+    type: 'error',
+    isLoading: false,
+    autoClose: 4000,
+    render: message,
+  });
+};
+
+const updateLoadingToastToSuccess = ({ message }: IToast) => {
+  toast.update(loadingToastId, {
+    type: 'success',
+    isLoading: false,
+    autoClose: 4000,
+    render: message,
+  });
+};
+
+export {
+  errorToast,
+  successToast,
+  infoToast,
+  loadingToast,
+  updateLoadingToastToError,
+  updateLoadingToastToSuccess,
+};
