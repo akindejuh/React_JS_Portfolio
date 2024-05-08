@@ -102,7 +102,9 @@ const Header: React.FunctionComponent = () => {
                 {link.link_name}
               </a>
             ))}
-            <button className="bg-black w-full h-[44px] px-3 flex items-center justify-center rounded mt-2">
+            <button
+              onClick={toggle_menu}
+              className="bg-black w-full h-[44px] px-3 flex items-center justify-center rounded mt-2">
               <p className="font-space-grotesk-500">Download CV</p>
               <img className="ml-2 w-[13px] h-[13px]" src={Icons.download} />
             </button>
