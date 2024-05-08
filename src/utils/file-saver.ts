@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { saveAs } from 'file-saver';
 import {
-  loadingToast,
+  reEnableLoadingToast,
   updateLoadingToastToError,
   updateLoadingToastToSuccess,
 } from 'src/handlers/toast';
@@ -16,7 +16,7 @@ const downloadFile = async ({
   file_name,
 }: IDownloadFile): Promise<void> => {
   try {
-    loadingToast({ message: 'Downloading...' });
+    reEnableLoadingToast({ message: 'Downloading...' });
     const response = await axios.get(file_url, {
       responseType: 'blob',
     });

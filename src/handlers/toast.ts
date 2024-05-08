@@ -55,11 +55,36 @@ const loadingToast = ({ message }: Partial<IToast>) => {
     draggable: false,
     theme: 'light',
     isLoading: true,
+    toastId: loadingToastId,
+    type: 'info',
+  });
+};
+
+const reEnableLoadingToast = ({ message }: IToast) => {
+  toast.update(loadingToastId, {
+    position: 'top-right',
+    autoClose: 4000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: false,
+    theme: 'light',
+    isLoading: true,
+    toastId: loadingToastId,
+    type: 'info',
+    render: message,
   });
 };
 
 const updateLoadingToastToError = ({ message }: IToast) => {
   toast.update(loadingToastId, {
+    position: 'top-right',
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: false,
+    theme: 'light',
+    toastId: loadingToastId,
     type: 'error',
     isLoading: false,
     autoClose: 4000,
@@ -69,6 +94,13 @@ const updateLoadingToastToError = ({ message }: IToast) => {
 
 const updateLoadingToastToSuccess = ({ message }: IToast) => {
   toast.update(loadingToastId, {
+    position: 'top-right',
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: false,
+    theme: 'light',
+    toastId: loadingToastId,
     type: 'success',
     isLoading: false,
     autoClose: 4000,
@@ -81,6 +113,7 @@ export {
   successToast,
   infoToast,
   loadingToast,
+  reEnableLoadingToast,
   updateLoadingToastToError,
   updateLoadingToastToSuccess,
 };

@@ -4,7 +4,7 @@ import { Icons } from 'src/assets/icons/_icons';
 import { Images } from 'src/assets/images/_images';
 import { ref, getDownloadURL } from '@firebase/storage';
 import { fb_storage } from 'src/configs/firebase';
-import { errorToast } from 'src/handlers/toast';
+import { loadingToast, updateLoadingToastToError } from 'src/handlers/toast';
 import { downloadFile } from 'src/utils/file-saver';
 
 const Header: React.FunctionComponent = () => {
@@ -24,17 +24,18 @@ const Header: React.FunctionComponent = () => {
 
   const get_resume = async () => {
     const storageRef = ref(fb_storage, '/resume/Akindeju_CV.pdf');
-
+    loadingToast({ message: 'Downloading...' });
     try {
       await getDownloadURL(storageRef)
         .then(async url => {
           await downloadFile({ file_url: url, file_name: 'Akindeju_CV.pdf' });
         })
         .catch(error => {
-          error && errorToast({ message: 'Error downloading File!' });
+          error &&
+            updateLoadingToastToError({ message: 'Error downloading File!' });
         });
     } catch (err) {
-      errorToast({ message: (err as any)?.message });
+      updateLoadingToastToError({ message: (err as any)?.message });
     }
   };
 
