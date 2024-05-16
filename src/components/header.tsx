@@ -22,6 +22,11 @@ const Header: React.FunctionComponent = () => {
     setIsOpen(!isOpen);
   };
 
+  const get_resume_mobile = async (): Promise<void> => {
+    setIsOpen(false);
+    await get_resume();
+  };
+
   const get_resume = async () => {
     const storageRef = ref(fb_storage, '/resume/Akindeju_CV.pdf');
     loadingToast({ message: 'Downloading...' });
@@ -103,7 +108,7 @@ const Header: React.FunctionComponent = () => {
               </a>
             ))}
             <button
-              onClick={toggle_menu}
+              onClick={get_resume_mobile}
               className="bg-black w-full h-[44px] px-3 flex items-center justify-center rounded mt-2">
               <p className="font-space-grotesk-500">Download CV</p>
               <img className="ml-2 w-[13px] h-[13px]" src={Icons.download} />
