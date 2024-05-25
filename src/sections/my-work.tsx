@@ -29,6 +29,7 @@ const MyWork: React.FunctionComponent = () => {
             project_desc={work.project_desc}
             project_link={work.project_link}
             project_name={work.project_name}
+            project_dp={work.project_dp}
           />
         ))}
       </div>
@@ -43,6 +44,7 @@ const MyWork: React.FunctionComponent = () => {
             project_desc={work.project_desc}
             project_link={work.project_link}
             project_name={work.project_name}
+            project_dp={work.project_dp}
           />
         ))}
       </div>
