@@ -25,9 +25,9 @@ const WorkCard: React.FunctionComponent<IWorkCard> = ({
     }
   };
   return (
-    <div className="max-w-[300px] max-md:max-w-full">
+    <div className="max-w-[300px] min-w-[300px] max-md:max-w-full max-md:mb-2">
       <img
-        className="w-full rounded-lg max-w-[100%] max-h-[230px] object-contain"
+        className="w-full rounded-lg max-w-[100%] min-h-[230px] max-h-[230px] object-contain"
         src={project_dp || projectCard}
       />
       <h1 className="mt-5 font-space-grotesk-700 text-2xl truncate w-full">

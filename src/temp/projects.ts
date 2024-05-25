@@ -7,7 +7,7 @@ export const mobile_work: IWorkCard[] = [
     project_desc: 'A Restaurant Management App',
     project_link:
       'https://drive.google.com/drive/folders/1U8b0pgtXhi9pdzRvrks0fLQhZU0mp1XA?usp=share_link',
-    project_dp: require('./_shots/mobile-mira.jpg'),
+    project_dp: require('./_shots/mobile-mira.png'),
   },
   {
     project_name: 'Blogged',
