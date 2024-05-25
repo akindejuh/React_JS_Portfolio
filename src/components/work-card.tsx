@@ -17,7 +17,6 @@ const WorkCard: React.FunctionComponent<IWorkCard> = ({
   project_link,
   project_dp,
 }) => {
-  console.log(project_dp);
   const open_link = (url: string) => {
     if (url) {
       window.open(url, '_blank');
