@@ -30,6 +30,13 @@ export const mobile_work: IWorkCard[] = [
       'https://drive.google.com/file/d/1IosFWiEh2xG4skEZbc0vezi3wW4dJYgd/view?usp=share_link',
     project_dp: require('./_shots/mobile-travel-app.png'),
   },
+  {
+    project_name: 'FP News',
+    project_desc: 'A news listing app',
+    project_link:
+      'https://drive.google.com/file/d/1GgkzBWrMsNS7Gp1PjQtcDhW5-amqUQTt/view',
+    project_dp: require('./_shots/fp_news.png'),
+  },
 ];
 
 export const web_work = [
@@ -109,6 +116,11 @@ export const backend_work = [
     project_name: 'Property Database API',
     project_desc: 'API for managing a property database',
     project_link: 'https://github.com/gbenga2540/Node_JS_Product_App',
+  },
+  {
+    project_name: 'FP News API',
+    project_desc: 'API for the FP News App',
+    project_link: 'https://github.com/gbenga2540/Node_JS_FP_News',
   },
 ];
 
