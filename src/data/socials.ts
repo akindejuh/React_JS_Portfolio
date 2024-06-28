@@ -10,7 +10,7 @@ export const socials: ISocials[] = [
   {
     social: 'GitHub',
     link: 'https://github.com/gbenga2540',
-    display: '@Gbenga2540',
+    display: '@gbenga2540',
   },
   {
     social: 'WhatsApp',

@@ -78,7 +78,7 @@ const MyWork: React.FunctionComponent = () => {
       </div>
 
       <h1 className="font-space-grotesk-700 text-[24px] mt-11 mb-2 text-[#333333]">
-        Any Login Required:
+        Any Authentication Required:
       </h1>
       <p className="san-serif text-[15px] text-black">
         <b className="mr-1">Username:</b>
