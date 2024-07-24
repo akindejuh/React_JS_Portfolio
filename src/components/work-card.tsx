@@ -38,7 +38,7 @@ const WorkCard: React.FunctionComponent<IWorkCard> = ({
       </p>
       <button
         onClick={() => open_link(project_link)}
-        className="bg-black mt-5 max-lg:mt-7 h-[44px] px-3 w-[155px] flex items-center justify-center rounded transition-all duration-300 ease-in-out hover:bg-opacity-70">
+        className="bg-gray-600 mt-5 max-lg:mt-7 h-[44px] px-3 w-[155px] flex items-center justify-center rounded transition-all duration-300 ease-in-out hover:bg-opacity-70">
         <p className="font-space-grotesk-700 text-white">View Project</p>
         <img className="ml-2 w-[15px] h-[15px]" src={Icons.arrowRight} />
       </button>

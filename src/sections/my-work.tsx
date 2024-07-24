@@ -19,10 +19,10 @@ const MyWork: React.FunctionComponent = () => {
         }
       </p>
 
-      <h2 className="font-space-grotesk-700 text-[24px] mt-11 mb-3 text-[#333333]">
+      <h2 className="font-space-grotesk-700 text-[24px] mt-11 text-[#333333]">
         Mobile - React Native
       </h2>
-      <div className="flex flex-wrap justify-start gap-11 mb-14 max-lg:justify-around max-md:gap-16">
+      <div className="flex flex-wrap justify-start gap-11 mb-20 max-lg:justify-around max-md:gap-16">
         {mobile_work.map(work => (
           <WorkCard
             key={work.project_desc}
@@ -34,10 +34,10 @@ const MyWork: React.FunctionComponent = () => {
         ))}
       </div>
 
-      <h2 className="font-space-grotesk-700 text-[24px] mt-11 mb-3 text-[#333333]">
+      <h2 className="font-space-grotesk-700 text-[24px] mt-11 text-[#333333]">
         Web - React.js
       </h2>
-      <div className="flex flex-wrap justify-stretch gap-11 mb-14 max-lg:justify-around max-md:gap-16">
+      <div className="flex flex-wrap justify-stretch gap-11 mb-20 max-lg:justify-around max-md:gap-16">
         {web_work.map(work => (
           <WorkCard
             key={work.project_desc}
@@ -49,10 +49,10 @@ const MyWork: React.FunctionComponent = () => {
         ))}
       </div>
 
-      <h2 className="font-space-grotesk-700 text-[24px] mt-11 mb-3 text-[#333333]">
+      <h2 className="font-space-grotesk-700 text-[24px] mt-11 text-[#333333]">
         Backend - Node.js
       </h2>
-      <div className="flex flex-wrap justify-stretch gap-11 mb-14 max-lg:justify-around max-md:gap-16">
+      <div className="flex flex-wrap justify-stretch gap-11 mb-20 max-lg:justify-around max-md:gap-16">
         {backend_work.map(work => (
           <WorkCard
             key={work.project_desc}
@@ -63,10 +63,10 @@ const MyWork: React.FunctionComponent = () => {
         ))}
       </div>
 
-      <h2 className="font-space-grotesk-700 text-[24px] mt-11 mb-3 text-[#333333]">
+      <h2 className="font-space-grotesk-700 text-[24px] mt-11 text-[#333333]">
         Rust 👀
       </h2>
-      <div className="flex flex-wrap justify-stretch gap-11 mb-14 max-lg:justify-around max-md:gap-16">
+      <div className="flex flex-wrap justify-stretch gap-11 mb-20 max-lg:justify-around max-md:gap-16">
         {rust_work.map(work => (
           <WorkCard
             key={work.project_desc}

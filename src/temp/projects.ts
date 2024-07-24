@@ -37,6 +37,20 @@ export const mobile_work: IWorkCard[] = [
       'https://drive.google.com/file/d/1GgkzBWrMsNS7Gp1PjQtcDhW5-amqUQTt/view',
     project_dp: require('./_shots/fp_news.png'),
   },
+  {
+    project_name: 'KFS',
+    project_desc:
+      'An attendance app with fingerprint authentication for students.',
+    project_link:
+      'https://drive.google.com/file/d/1AbuOllUwliOUMBglFm9h0wOKl80d9xS5/view?usp=share_link',
+  },
+  {
+    project_name: 'Kwasu PAS',
+    project_desc:
+      'An attendance app with pin/password authentication for students.',
+    project_link:
+      'https://drive.google.com/file/d/1eWsNoYPMAt9uWJctrPQbY8tC7Gj1EeB3/view?usp=share_link',
+  },
 ];
 
 export const web_work = [
