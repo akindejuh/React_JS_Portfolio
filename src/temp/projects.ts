@@ -10,6 +10,13 @@ export const mobile_work: IWorkCard[] = [
     project_dp: require('./_shots/mobile-mira.png'),
   },
   {
+    project_name: 'Whispr',
+    project_desc: 'A Secure Chat App',
+    project_link:
+      'https://drive.google.com/file/d/17yJEqFRr7CD0utOS4njOkToOi6S8YttJ/view?usp=sharing',
+    project_dp: require('./_shots/whispr.png'),
+  },
+  {
     project_name: 'Blogged',
     project_desc: 'A Blog App',
     project_link:
