@@ -10,7 +10,7 @@ export const socials: ISocials[] = [
   {
     social: 'GitHub',
     link: 'https://github.com/akindejuh',
-    display: '@gbenga2540',
+    display: '@akindejuh',
   },
   {
     social: 'WhatsApp',
@@ -19,8 +19,8 @@ export const socials: ISocials[] = [
   },
   {
     social: 'X (Twitter)',
-    link: 'https://twitter.com/Akindeju_Gbenga',
-    display: '@Akindeju_Gbenga',
+    link: 'https://twitter.com/akindejuh',
+    display: '@akindejuh',
   },
   {
     social: 'LinkedIn',
