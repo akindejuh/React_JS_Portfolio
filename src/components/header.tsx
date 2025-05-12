@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Icons } from 'src/assets/icons/_icons';
 import { Images } from 'src/assets/images/_images';
-import { ref, getDownloadURL } from '@firebase/storage';
-import { fb_storage } from 'src/configs/firebase';
-import { loadingToast, updateLoadingToastToError } from 'src/handlers/toast';
-import { downloadFile } from 'src/utils/file-saver';
+// import { ref, getDownloadURL } from '@firebase/storage';
+// import { fb_storage } from 'src/configs/firebase';
+import { loadingToast, updateLoadingToastToSuccess } from 'src/handlers/toast';
+// import { downloadFile } from 'src/utils/file-saver';
+// @ts-ignore
+import portFolioPDF from '../assets/pdfs/Akindeju_CV.pdf'; 
 
 const Header: React.FunctionComponent = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -28,20 +30,31 @@ const Header: React.FunctionComponent = () => {
   };
 
   const get_resume = async () => {
-    const storageRef = ref(fb_storage, '/resume/Akindeju_CV.pdf');
+    // const storageRef = ref(fb_storage, '/resume/Akindeju_CV.pdf');
+    // loadingToast({ message: 'Downloading...' });
+    // try {
+    //   await getDownloadURL(storageRef)
+    //     .then(async url => {
+    //       await downloadFile({ file_url: url, file_name: 'Akindeju_CV.pdf' });
+    //     })
+    //     .catch(error => {
+    //       error &&
+    //         updateLoadingToastToError({ message: 'Error downloading File!' });
+    //     });
+    // } catch (err) {
+    //   updateLoadingToastToError({ message: (err as any)?.message });
+    // }
+    
     loadingToast({ message: 'Downloading...' });
-    try {
-      await getDownloadURL(storageRef)
-        .then(async url => {
-          await downloadFile({ file_url: url, file_name: 'Akindeju_CV.pdf' });
-        })
-        .catch(error => {
-          error &&
-            updateLoadingToastToError({ message: 'Error downloading File!' });
-        });
-    } catch (err) {
-      updateLoadingToastToError({ message: (err as any)?.message });
-    }
+    const link = document.createElement('a');
+    link.href = portFolioPDF;
+    link.download = 'Akindeju_CV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setTimeout(() => {
+      updateLoadingToastToSuccess({ message: 'File Downloaded!' });
+    }, 1000);
   };
 
   return (
