@@ -8,6 +8,9 @@ module.exports = {
         'space-grotesk-500': ['Space-Grotesk-500', 'sans-serif'],
         'space-grotesk-700': ['Space-Grotesk-700', 'sans-serif'],
       },
+      margin: {
+        auto: 'auto',
+      },
     },
   },
   variants: {},

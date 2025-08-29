@@ -1,10 +1,11 @@
 import React from 'react';
 import { Icons } from 'src/assets/icons/_icons';
 import { Images } from 'src/assets/images/_images';
+import { scrollToSection } from 'src/utils/helper';
 
 const AboutMe: React.FunctionComponent = () => {
     return (
-        <section className="container relative max-w-[1000px] flex z-0 self-center mt-[12rem] mb-[10rem] max-lg:mt-[6rem] max-lg:mb-[4rem] max-lg:max-w-full max-lg:flex-col max-lg:px-4">
+        <section id="about-me" className="container relative max-w-[1000px] flex z-0 self-center mt-[9rem] mb-[10px] max-lg:mt-[6rem] max-lg:mb-[2rem] max-lg:max-w-full max-lg:flex-col max-lg:px-4">
             <div className="w-1/2 max-lg:w-full">
                 <p className="font-space-grotesk-400 mt-7">Hello there 👋</p>
                 <h1 className="font-space-grotesk-700 mt-5 text-3xl max-w-[90%] text-black leading-10 max-lg:text-[25px]">
@@ -18,7 +19,7 @@ const AboutMe: React.FunctionComponent = () => {
                     }
                 </h2>
                 <button className="bg-black mt-10 max-lg:mt-7 h-[44px] px-3 w-[155px] flex items-center justify-center rounded transition-all duration-300 ease-in-out hover:bg-opacity-70">
-                    <p className="font-space-grotesk-700 text-white">
+                    <p onClick={() => scrollToSection('my-work', 120)} className="font-space-grotesk-700 text-white">
                         See Work
                     </p>
                     <img

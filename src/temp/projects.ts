@@ -11,7 +11,7 @@ export const mobile_work: IWorkCard[] = [
   },
   {
     project_name: 'Whispr',
-    project_desc: 'A Secure Chat App',
+    project_desc: 'A Secure Chat App which makes use of ByteLock encryption',
     project_link:
       'https://drive.google.com/file/d/17yJEqFRr7CD0utOS4njOkToOi6S8YttJ/view?usp=sharing',
     project_dp: require('./_shots/whispr.png'),
@@ -117,31 +117,45 @@ export const web_work = [
   },
 ];
 
+export const oss_work = [
+  {
+    project_name: 'ByteLock',
+    project_desc: 'A simple cipher/decipher algorithm',
+    project_link: 'https://github.com/akindejuh/bytelock',
+  },
+  {
+    project_name: 'React Google Cloud Translate',
+    project_desc:
+      'A React.js wrapper built around google cloud translation API',
+    project_link: 'https://github.com/akindejuh/react-google-cloud-translate',
+  },
+];
+
 export const backend_work = [
   {
     project_name: 'Tutor AI API',
     project_desc: 'API for the Tutor AI app',
-    project_link: 'https://github.com/gbenga2540/Node_JS_TutorAI_v2',
+    project_link: 'https://github.com/akindejuh/Node_JS_TutorAI_v2',
   },
   {
     project_name: 'Blogged API',
     project_desc: 'API for the Blogged app',
-    project_link: 'https://github.com/gbenga2540/Node_JS_Blogged',
+    project_link: 'https://github.com/akindejuh/Node_JS_Blogged',
   },
   {
     project_name: 'Health Records System API',
     project_desc: 'API for the student health records',
-    project_link: 'https://github.com/gbenga2540/Node_JS_Futa_Clinic',
+    project_link: 'https://github.com/akindejuh/Node_JS_Futa_Clinic',
   },
   {
     project_name: 'Property Database API',
     project_desc: 'API for managing a property database',
-    project_link: 'https://github.com/gbenga2540/Node_JS_Product_App',
+    project_link: 'https://github.com/akindejuh/Node_JS_Product_App',
   },
   {
     project_name: 'FP News API',
     project_desc: 'API for the FP News App',
-    project_link: 'https://github.com/gbenga2540/Node_JS_FP_News',
+    project_link: 'https://github.com/akindejuh/Node_JS_FP_News',
   },
 ];
 
@@ -149,6 +163,33 @@ export const rust_work = [
   {
     project_name: 'Bubble Sort Algoritghm',
     project_desc: 'Basic bubble sort in Rust',
-    project_link: 'https://github.com/gbenga2540/Rust_Sorting_Algorithms',
+    project_link: 'https://github.com/akindejuh/Rust_Sorting_Algorithms',
+  },
+];
+
+export const work_done = [
+  {
+    title: 'Custom Configurable Form at Lendsqr',
+    desc: 'Designed and maintained a dynamic form system that allows lenders to define custom input types (e.g., text fields, dropdowns, date pickers) based on required data specifications.',
+  },
+  {
+    title: 'Open Source Translation Package',
+    desc: 'Built a plug-and-play package leveraging Google Cloud Translation API to enable seamless multilingual support in applications.',
+  },
+  {
+    title: 'Open Source Encryption & Decryption Algorithm',
+    desc: 'Developed a lightweight and secure algorithm for encrypting and decrypting sensitive data, available for open-source use.',
+  },
+  {
+    title: 'Financial Applications',
+    desc: 'Contributed to the development and ongoing maintenance of multiple financial applications, successfully deployed on both the App Store and Google Play.',
+  },
+  {
+    title: 'Whispr (Real-time Chat App)',
+    desc: 'Created a real-time chat application with instant messaging features, designed for speed and scalability.',
+  },
+  {
+    title: 'Expo to React Native CLI Migration',
+    desc: 'Led the full migration of an application from Expo to React Native CLI, optimizing performance and enabling greater native customization.',
   },
 ];

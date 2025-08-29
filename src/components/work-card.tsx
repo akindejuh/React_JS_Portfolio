@@ -2,7 +2,7 @@ import React from 'react';
 import { Icons } from 'src/assets/icons/_icons';
 
 //! Test
-import projectCard from 'src/temp/project-card.png';
+// import projectCard from 'src/temp/project-card.png';
 
 export interface IWorkCard {
   project_name: string;
@@ -15,7 +15,7 @@ const WorkCard: React.FunctionComponent<IWorkCard> = ({
   project_name,
   project_desc,
   project_link,
-  project_dp,
+  // project_dp,
 }) => {
   const open_link = (url: string) => {
     if (url) {
@@ -25,23 +25,28 @@ const WorkCard: React.FunctionComponent<IWorkCard> = ({
     }
   };
   return (
-    <div className="max-w-[300px] min-w-[300px] max-md:max-w-full max-md:mb-2">
-      <img
-        className="w-full rounded-lg max-w-[100%] min-h-[230px] max-h-[230px] object-contain"
+    <div className="min-w-[300px] w-full max-md:max-w-full flex bg-[#F5F5F5] rounded-lg p-5">
+      {/* <img
+        className="rounded-lg w-[35%] h-[100%] object-contain mr-5"
         src={project_dp || projectCard}
-      />
-      <h1 className="mt-5 font-space-grotesk-700 text-2xl truncate w-full">
-        {project_name || ''}
-      </h1>
-      <p className="mt-1 leading-6 text-[14px] text-[#333333] font-space-grotesk-400 truncate w-full">
-        {project_desc || ''}
-      </p>
-      <button
-        onClick={() => open_link(project_link)}
-        className="bg-gray-600 mt-5 max-lg:mt-7 h-[44px] px-3 w-[155px] flex items-center justify-center rounded transition-all duration-300 ease-in-out hover:bg-opacity-70">
-        <p className="font-space-grotesk-700 text-white">View Project</p>
-        <img className="ml-2 w-[15px] h-[15px]" src={Icons.arrowRight} />
-      </button>
+      /> */}
+      
+      <div>
+        <h1 className="font-space-grotesk-500 text-xl w-full">
+          {project_name || ''}
+        </h1>
+
+        <p className="mt-1 leading-6 text-[14px] text-[#333333] font-space-grotesk-400 w-full mb-10">
+          {project_desc || ''}
+        </p>
+
+        <button
+          onClick={() => open_link(project_link)}
+          className="bg-gray-600 mt-5 max-lg:mt-7 h-[44px] px-3 w-[155px] flex items-center justify-center rounded transition-all duration-300 ease-in-out hover:bg-opacity-70">
+          <p className="font-space-grotesk-500 text-white">View Project</p>
+          <img className="ml-2 w-[15px] h-[15px]" src={Icons.arrowRight} />
+        </button>
+      </div>
     </div>
   );
 };

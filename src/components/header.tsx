@@ -8,16 +8,16 @@ import { loadingToast, updateLoadingToastToSuccess } from 'src/handlers/toast';
 // import { downloadFile } from 'src/utils/file-saver';
 // @ts-ignore
 import portFolioPDF from '../assets/pdfs/Akindeju_CV.pdf'; 
+import { scrollToSection } from 'src/utils/helper';
 
 const Header: React.FunctionComponent = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const header_links: { link_name: string }[] = [
-    { link_name: 'About' },
-    { link_name: 'Services' },
-    { link_name: 'Projects' },
-    { link_name: 'Experience' },
-    { link_name: 'Contact' },
+  const header_links: { link_name: string, link_id?: string }[] = [
+    { link_name: 'About me', link_id: 'about-me' },
+    { link_name: 'My work', link_id: 'my-work' },
+    { link_name: 'Projects', link_id: 'my-projects' },
+    { link_name: 'Contact', link_id: 'contact-me' },
   ];
 
   const toggle_menu = (): void => {
@@ -66,6 +66,7 @@ const Header: React.FunctionComponent = () => {
         <div className="hidden md:flex items-center space-x-8">
           {header_links.map(link => (
             <a
+              onClick={() => scrollToSection(link.link_id ?? '', 120)}
               key={link.link_name}
               className="text-black cursor-pointer font-space-grotesk-700">
               {link.link_name}
@@ -115,8 +116,12 @@ const Header: React.FunctionComponent = () => {
           <div className="container mx-auto py-2 px-6 text-center">
             {header_links.map(link => (
               <a
+                onClick={() => {
+                  scrollToSection(link.link_id ?? '', 120);
+                  setIsOpen(false);
+                }}
                 key={link.link_name}
-                className="text-black block py-3 font-space-grotesk-500">
+                className="text-black block py-3 font-space-grotesk-500 cursor-pointer">
                 {link.link_name}
               </a>
             ))}

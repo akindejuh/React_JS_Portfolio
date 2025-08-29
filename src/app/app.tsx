@@ -7,7 +7,8 @@ import Header from 'src/components/header';
 import AboutMe from 'src/sections/about-me';
 import ContactMe from 'src/sections/contact-me';
 // import MyExperience from 'src/sections/my-experience';
-import MyWork from 'src/sections/my-work';
+import WorkDone from 'src/sections/workdone';
+import MyWork from 'src/sections/projects';
 
 const App: React.FunctionComponent = () => {
   return (
@@ -15,6 +16,7 @@ const App: React.FunctionComponent = () => {
       <Header />
       <div className="flex flex-col h-full">
         <AboutMe />
+        <WorkDone />
         <MyWork />
         {/* <MyExperience /> */}
         <ContactMe />

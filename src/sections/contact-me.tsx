@@ -4,7 +4,7 @@ import { socials } from 'src/data/socials';
 
 const ContactMe: React.FunctionComponent = () => {
   return (
-    <section className="container relative max-w-[1000px] flex flex-col z-0 self-center mt-[6rem] mb-[10rem] max-lg:mt-[6rem] max-lg:mb-[4rem] max-lg:max-w-full max-lg:px-4">
+    <section id="contact-me" className="container relative max-w-[1000px] flex flex-col z-0 self-center mt-[2rem] mb-[10rem] max-lg:mt-[2.5rem] max-lg:mb-[4rem] max-lg:max-w-full max-lg:px-4">
       <h1 className="font-space-grotesk-700 mt-5 text-[35px] mb-4 text-black max-lg:text-[30px]">
         Contact Me
       </h1>
