@@ -24,10 +24,7 @@ const Projects: React.FunctionComponent = () => {
             {mw.works.map(work => (
               <WorkCard
                 key={work.project_desc}
-                project_desc={work.project_desc}
-                project_link={work.project_link}
-                project_name={work.project_name}
-                project_dp={work.project_dp}
+                { ...work }
               />
             ))}
           </div>

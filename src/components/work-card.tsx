@@ -6,6 +6,18 @@ export interface IWorkCard {
   project_desc: string;
   project_link: string;
   project_dp?: any;
+  stack?: {
+    android?: boolean;
+    ios?: boolean;
+    web?: boolean;
+    react?: boolean;
+    reactNative?: boolean;
+    golang?: boolean;
+    rust?: boolean;
+    nodejs?: boolean;
+    github?: boolean;
+    javascript?: boolean;
+  }
 }
 
 const WorkCard: React.FunctionComponent<IWorkCard> = ({
@@ -13,7 +25,14 @@ const WorkCard: React.FunctionComponent<IWorkCard> = ({
   project_desc,
   project_link,
   // project_dp,
+  stack
 }) => {
+  const randomize_stack_icons = () => {
+    const keys = Object.keys(stack || {});
+    keys.sort(() => Math.random() - 0.5);
+    return keys;
+  };
+
   const open_link = (url: string) => {
     if (url) {
       window.open(url, '_blank');
@@ -31,10 +50,16 @@ const WorkCard: React.FunctionComponent<IWorkCard> = ({
         <p className="mt-1 leading-6 text-[14px] text-[#333333] font-space-grotesk-400 w-full mb-10">
           {project_desc || ''}
         </p>
+        
+        <span className='mt-[auto] flex flex-row flex-wrap items-center gap-2'>
+          {randomize_stack_icons().map((key, index) => (
+            <img key={index} src={(Icons as any)[key]} width={24} height={24} style={{ objectFit: 'contain' }} />
+          ))}
+        </span>
 
         <button
           onClick={() => open_link(project_link)}
-          className="bg-gray-600 mt-[auto] max-lg:mt-7 h-[44px] px-3 w-[155px] flex items-center justify-center rounded transition-all duration-300 ease-in-out hover:bg-opacity-70">
+          className="bg-gray-600 mt-2 max-lg:mt-7 h-[44px] px-3 w-[155px] flex items-center justify-center rounded transition-all duration-300 ease-in-out hover:bg-opacity-70">
           <p className="font-space-grotesk-500 text-white">View Project</p>
           <img className="ml-2 w-[15px] h-[15px]" src={Icons.arrowRight} />
         </button>
