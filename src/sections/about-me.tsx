@@ -9,14 +9,10 @@ const AboutMe: React.FunctionComponent = () => {
             <div className="w-1/2 max-lg:w-full">
                 <p className="font-space-grotesk-400 mt-7">Hello there 👋</p>
                 <h1 className="font-space-grotesk-700 mt-5 text-3xl max-w-[90%] text-black leading-10 max-lg:text-[25px]">
-                    {
-                        "Hi, I'm Oluwagbemiga, a Full Stack Mobile Developer with a knack for creativity and a great sense of humor!"
-                    }
+                    {"Hi, I'm Oluwagbemiga, a Full Stack Mobile/Web Developer with a knack for creativity and a great sense of humor!"}
                 </h1>
                 <h2 className="font-space-grotesk-400 mt-6 max-w-[90%] text-[16px] text-[#333333] leading-7">
-                    {
-                        "I'm a dedicated Full Stack Mobile Developer with a track record of crafting intuitive, user-centric designs. I pride myself on delivering top-notch solutions tailored to each client's requirements. Let's collaborate to turn your ideas into reality swiftly."
-                    }
+                    {"I'm a Full Stack Mobile/Web Developer with a track record of crafting intuitive, user-centric designs. I pride myself on delivering top-notch solutions tailored to each client's requirements. Let's collaborate to turn your ideas into reality swiftly."}
                 </h2>
                 <button className="bg-black mt-10 max-lg:mt-7 h-[44px] px-3 w-[155px] flex items-center justify-center rounded transition-all duration-300 ease-in-out hover:bg-opacity-70">
                     <p onClick={() => scrollToSection('my-work', 120)} className="font-space-grotesk-700 text-white">

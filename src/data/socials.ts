@@ -27,4 +27,9 @@ export const socials: ISocials[] = [
     link: 'http://linkedin.com/in/akindeju-oluwagbemiga-004b95225',
     display: 'Akindeju Oluwagbemiga',
   },
+  {
+    social: 'Mobile',
+    link: 'tel:+2349030253741',
+    display: '+2349030253741',
+  },
 ];

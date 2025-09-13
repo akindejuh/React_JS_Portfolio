@@ -1,9 +1,6 @@
 import React from 'react';
 import { Icons } from 'src/assets/icons/_icons';
 
-//! Test
-// import projectCard from 'src/temp/project-card.png';
-
 export interface IWorkCard {
   project_name: string;
   project_desc: string;
@@ -26,12 +23,7 @@ const WorkCard: React.FunctionComponent<IWorkCard> = ({
   };
   return (
     <div className="min-w-[300px] w-full max-md:max-w-full flex bg-[#F5F5F5] rounded-lg p-5">
-      {/* <img
-        className="rounded-lg w-[35%] h-[100%] object-contain mr-5"
-        src={project_dp || projectCard}
-      /> */}
-      
-      <div>
+      <div className='flex flex-col'>
         <h1 className="font-space-grotesk-500 text-xl w-full">
           {project_name || ''}
         </h1>
@@ -42,7 +34,7 @@ const WorkCard: React.FunctionComponent<IWorkCard> = ({
 
         <button
           onClick={() => open_link(project_link)}
-          className="bg-gray-600 mt-5 max-lg:mt-7 h-[44px] px-3 w-[155px] flex items-center justify-center rounded transition-all duration-300 ease-in-out hover:bg-opacity-70">
+          className="bg-gray-600 mt-[auto] max-lg:mt-7 h-[44px] px-3 w-[155px] flex items-center justify-center rounded transition-all duration-300 ease-in-out hover:bg-opacity-70">
           <p className="font-space-grotesk-500 text-white">View Project</p>
           <img className="ml-2 w-[15px] h-[15px]" src={Icons.arrowRight} />
         </button>
