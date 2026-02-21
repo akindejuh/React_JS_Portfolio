@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { Icons } from 'src/assets/icons/_icons';
+import { Icons } from '@/assets/icons/_icons';
 
 export interface IWorkCard {
   project_name: string;

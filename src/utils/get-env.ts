@@ -7,13 +7,13 @@ const getEnv = (name: string): string | undefined => {
 };
 
 export const getEnvConfig = () => {
-  const apiKey = getEnv('REACT_APP_API_KEY');
-  const authDomain = getEnv('REACT_APP_AUTH_DOMAIN');
-  const projectId = getEnv('REACT_APP_PROJECT_ID');
-  const storageBucket = getEnv('REACT_APP_STORAGE_BUCKET');
-  const messagingSenderId = getEnv('REACT_APP_MESSAGING_SENDER_ID');
-  const appId = getEnv('REACT_APP_APP_ID');
-  const measurementId = getEnv('REACT_APP_MEASUREMENT_ID');
+  const apiKey = getEnv('NEXT_PUBLIC_API_KEY');
+  const authDomain = getEnv('NEXT_PUBLIC_AUTH_DOMAIN');
+  const projectId = getEnv('NEXT_PUBLIC_PROJECT_ID');
+  const storageBucket = getEnv('NEXT_PUBLIC_STORAGE_BUCKET');
+  const messagingSenderId = getEnv('NEXT_PUBLIC_MESSAGING_SENDER_ID');
+  const appId = getEnv('NEXT_PUBLIC_APP_ID');
+  const measurementId = getEnv('NEXT_PUBLIC_MEASUREMENT_ID');
 
   return {
     apiKey,

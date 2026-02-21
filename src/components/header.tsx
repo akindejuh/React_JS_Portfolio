@@ -1,53 +1,45 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Icons } from 'src/assets/icons/_icons';
-import { Images } from 'src/assets/images/_images';
-// import { ref, getDownloadURL } from '@firebase/storage';
-// import { fb_storage } from 'src/configs/firebase';
-import { loadingToast, updateLoadingToastToSuccess } from 'src/handlers/toast';
-// import { downloadFile } from 'src/utils/file-saver';
-// @ts-ignore
-import portFolioPDF from '../assets/pdfs/Akindeju_CV.pdf'; 
-import { scrollToSection } from 'src/utils/helper';
+'use client';
 
-const Header: React.FunctionComponent = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { loadingToast, updateLoadingToastToSuccess } from '@/handlers/toast';
+import { Images } from '@/assets/images/_images';
+const CV_PATH = '/pdfs/Akindeju_CV.pdf';
 
-  const header_links: { link_name: string, link_id?: string }[] = [
-    { link_name: 'About me', link_id: 'about-me' },
-    { link_name: 'My work', link_id: 'my-work' },
-    { link_name: 'Projects', link_id: 'my-projects' },
-    { link_name: 'Contact', link_id: 'contact-me' },
-  ];
+const navLinks = [
+  { name: 'About', id: 'about' },
+  { name: 'Experience', id: 'experience' },
+  { name: 'Projects', id: 'projects' },
+  { name: 'Skills', id: 'skills' },
+  { name: 'Contact', id: 'contact' },
+];
 
-  const toggle_menu = (): void => {
-    setIsOpen(!isOpen);
-  };
+const Header: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const get_resume_mobile = async (): Promise<void> => {
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollTo = (id: string) => {
     setIsOpen(false);
-    await get_resume();
+    const el = document.getElementById(id);
+    if (el) {
+      const offset = 80;
+      const y = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
   };
 
-  const get_resume = async () => {
-    // const storageRef = ref(fb_storage, '/resume/Akindeju_CV.pdf');
-    // loadingToast({ message: 'Downloading...' });
-    // try {
-    //   await getDownloadURL(storageRef)
-    //     .then(async url => {
-    //       await downloadFile({ file_url: url, file_name: 'Akindeju_CV.pdf' });
-    //     })
-    //     .catch(error => {
-    //       error &&
-    //         updateLoadingToastToError({ message: 'Error downloading File!' });
-    //     });
-    // } catch (err) {
-    //   updateLoadingToastToError({ message: (err as any)?.message });
-    // }
-    
+  const downloadCV = () => {
     loadingToast({ message: 'Downloading...' });
     const link = document.createElement('a');
-    link.href = portFolioPDF;
+    link.href = CV_PATH;
     link.download = 'Akindeju_CV.pdf';
     document.body.appendChild(link);
     link.click();
@@ -58,83 +50,103 @@ const Header: React.FunctionComponent = () => {
   };
 
   return (
-    <header className="text-white bg-white py-4 fixed top-0 w-full z-40 h-[6rem] shadow-lg flex max-md:shadow-none max-md:h-[4.7rem]">
-      <div className="container mx-auto flex justify-between items-center px-4">
-        <div className="flex items-center">
-          <img className="w-[45px] h-[45px] rounded-full" src={Images.logo} />
-        </div>
-        <div className="hidden md:flex items-center space-x-8">
-          {header_links.map(link => (
-            <a
-              onClick={() => scrollToSection(link.link_id ?? '', 120)}
-              key={link.link_name}
-              className="text-black cursor-pointer font-space-grotesk-700">
-              {link.link_name}
-            </a>
-          ))}
-          <button
-            onClick={get_resume}
-            className="bg-black h-[44px] px-3 w-[155px] flex items-center justify-center rounded transition-all duration-300 ease-in-out hover:bg-opacity-70">
-            <p className="font-space-grotesk-700">Download CV</p>
-            <img className="ml-2 w-[15px] h-[15px]" src={Icons.download} />
-          </button>
-        </div>
-        <div className="md:hidden flex items-center">
-          <button onClick={toggle_menu}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="black">
-              {isOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16m-7 6h7"
-                />
-              )}
-            </svg>
-          </button>
-        </div>
-      </div>
+    <>
+      <header
+        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+          scrolled
+            ? 'bg-[#0a0a0a]/80 backdrop-blur-md border-b border-[#1a1a1a]'
+            : 'bg-transparent'
+        }`}
+      >
+        <div className="max-w-[1400px] mx-auto flex justify-between items-center px-6 md:px-12 h-20">
+          <a
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="flex items-center gap-3 cursor-pointer"
+            data-cursor-hover
+          >
+            <div className="w-10 h-10 rounded-full border-2 border-accent p-[3px]">
+              <img
+                src={Images.dp}
+                alt="Akindeju Oluwagbemiga"
+                className="w-full h-full rounded-full object-cover"
+              />
+            </div>
+            <span className="font-space-grotesk-700 text-lg text-white">
+              AGMA<span className="text-accent">.</span>
+            </span>
+          </a>
 
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden absolute top-full left-0 w-full text-white pb-12 bg-white shadow-xl">
-          <div className="container mx-auto py-2 px-6 text-center">
-            {header_links.map(link => (
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
               <a
-                onClick={() => {
-                  scrollToSection(link.link_id ?? '', 120);
-                  setIsOpen(false);
-                }}
-                key={link.link_name}
-                className="text-black block py-3 font-space-grotesk-500 cursor-pointer">
-                {link.link_name}
+                key={link.id}
+                onClick={() => scrollTo(link.id)}
+                className="font-space-grotesk-500 text-sm text-[#737373] hover:text-white transition-colors duration-300 cursor-pointer uppercase tracking-wider"
+                data-cursor-hover
+              >
+                {link.name}
               </a>
             ))}
             <button
-              onClick={get_resume_mobile}
-              className="bg-black w-full h-[44px] px-3 flex items-center justify-center rounded mt-2">
-              <p className="font-space-grotesk-500">Download CV</p>
-              <img className="ml-2 w-[13px] h-[13px]" src={Icons.download} />
+              onClick={downloadCV}
+              className="font-space-grotesk-700 text-sm px-6 py-3 border border-accent text-accent rounded-full hover:bg-accent hover:text-white transition-all duration-300 uppercase tracking-wider"
+              data-cursor-hover
+            >
+              Resume
             </button>
-          </div>
-        </motion.div>
-      )}
-    </header>
+          </nav>
+
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden relative z-50 w-8 h-8 flex flex-col justify-center items-center gap-1.5"
+            data-cursor-hover
+          >
+            <span className={`w-6 h-[2px] bg-white transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-[5px]' : ''}`} />
+            <span className={`w-6 h-[2px] bg-white transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`} />
+            <span className={`w-6 h-[2px] bg-white transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-[5px]' : ''}`} />
+          </button>
+        </div>
+      </header>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="fixed inset-0 z-40 bg-[#0a0a0a] flex flex-col items-center justify-center gap-8"
+          >
+            {navLinks.map((link, i) => (
+              <motion.a
+                key={link.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 30 }}
+                transition={{ delay: i * 0.08, duration: 0.4 }}
+                onClick={() => scrollTo(link.id)}
+                className="font-space-grotesk-700 text-4xl text-white cursor-pointer hover:text-accent transition-colors duration-300"
+              >
+                {link.name}
+              </motion.a>
+            ))}
+            <motion.button
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 30 }}
+              transition={{ delay: navLinks.length * 0.08, duration: 0.4 }}
+              onClick={() => {
+                setIsOpen(false);
+                downloadCV();
+              }}
+              className="font-space-grotesk-700 text-lg px-8 py-4 border border-accent text-accent rounded-full hover:bg-accent hover:text-white transition-all duration-300 mt-4"
+            >
+              Download Resume
+            </motion.button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

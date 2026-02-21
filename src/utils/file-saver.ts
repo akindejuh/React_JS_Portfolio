@@ -4,7 +4,7 @@ import {
   reEnableLoadingToast,
   updateLoadingToastToError,
   updateLoadingToastToSuccess,
-} from 'src/handlers/toast';
+} from '@/handlers/toast';
 
 interface IDownloadFile {
   file_url: string;

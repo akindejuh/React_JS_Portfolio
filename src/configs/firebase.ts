@@ -1,7 +1,7 @@
 import { initializeApp } from '@firebase/app';
 import { getAnalytics } from '@firebase/analytics';
 import { getStorage } from '@firebase/storage';
-import { getEnvConfig } from 'src/utils/get-env';
+import { getEnvConfig } from '@/utils/get-env';
 
 const firebaseConfig = {
   apiKey: getEnvConfig().apiKey,
@@ -14,7 +14,7 @@ const firebaseConfig = {
 };
 
 const fb_app = initializeApp(firebaseConfig);
-const fb_analytics = getAnalytics(fb_app);
+const fb_analytics = typeof window !== 'undefined' ? getAnalytics(fb_app) : null;
 const fb_storage = getStorage(fb_app);
 
 export { fb_app, fb_analytics, fb_storage };
