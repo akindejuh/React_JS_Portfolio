@@ -64,6 +64,39 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Akindeju Oluwagbemiga',
+  alternateName: 'akindejuh',
+  url: 'https://akindejuh.netlify.app',
+  image: 'https://akindejuh.netlify.app/logo.jpg',
+  jobTitle: 'Software Engineer',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Benmore Technologies',
+  },
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Federal University of Technology, Akure',
+  },
+  knowsAbout: [
+    'React Native',
+    'React.js',
+    'Node.js',
+    'TypeScript',
+    'JavaScript',
+    'Mobile App Development',
+    'Web Development',
+  ],
+  sameAs: [
+    'https://github.com/akindejuh',
+    'https://linkedin.com/in/akindeju-oluwagbemiga-004b95225',
+    'https://twitter.com/akindejuh',
+    'https://instagram.com/akindejuh',
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -71,6 +104,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );
