@@ -13,11 +13,12 @@
 ### Task 1: Expand Metadata in layout.tsx
 
 **Files:**
+
 - Modify: `src/app/layout.tsx:1-12`
 
 **Step 1: Replace the metadata export**
 
-Replace the entire `metadata` export in `src/app/layout.tsx` with rich metadata including Open Graph, Twitter Cards, canonical URL, keywords, and author info. The title should lead with "Akindeju Oluwagbemiga" for name-based search ranking. Set `metadataBase` to `https://akindejuh.netlify.app`. Include OG image reference at `/og-image.png` (1200x630).
+Replace the entire `metadata` export in `src/app/layout.tsx` with rich metadata including Open Graph, Twitter Cards, canonical URL, keywords, and author info. The title should lead with "Akindeju Oluwagbemiga" for name-based search ranking. Set `metadataBase` to `https://akindejuh.netlify.app`. Include OG image reference at `/og-image.jpg` (1200x630).
 
 **Step 2: Verify build compiles**
 
@@ -36,11 +37,13 @@ git commit -m "feat(seo): add rich metadata with Open Graph and Twitter Cards"
 ### Task 2: Add JSON-LD Structured Data
 
 **Files:**
+
 - Modify: `src/app/layout.tsx:14-24` (the RootLayout component)
 
 **Step 1: Add JSON-LD Person schema**
 
 Add a `<script type="application/ld+json">` inside `<head>` in the RootLayout component. The JSON-LD should use Schema.org Person type with:
+
 - name: "Akindeju Oluwagbemiga"
 - alternateName: "akindejuh"
 - url: "https://akindejuh.netlify.app"
@@ -70,6 +73,7 @@ git commit -m "feat(seo): add JSON-LD Person schema structured data"
 ### Task 3: Add Semantic Name to Hero Section
 
 **Files:**
+
 - Modify: `src/sections/hero.tsx:81-88`
 
 **Step 1: Add full name as visible text**
@@ -93,6 +97,7 @@ git commit -m "feat(seo): add full name to hero for search indexing"
 ### Task 4: Create Static Sitemap and Update robots.txt
 
 **Files:**
+
 - Create: `public/sitemap.xml`
 - Modify: `public/robots.txt`
 
@@ -123,11 +128,13 @@ git commit -m "feat(seo): add sitemap.xml and update robots.txt"
 ### Task 5: Create OG Image
 
 **Files:**
-- Create: `public/og-image.png`
+
+- Create: `public/og-image.jpg`
 
 **Step 1: Generate a 1200x630 OG image**
 
 Create a 1200x630px PNG image with:
+
 - Dark background (#0a0a0a) matching the portfolio theme
 - "Akindeju Oluwagbemiga" in large white text (centered)
 - "Software Engineer" subtitle in accent color
@@ -138,7 +145,7 @@ Use a Node.js canvas script, SVG conversion, or any image generation approach.
 **Step 2: Verify file exists**
 
 ```bash
-file public/og-image.png
+file public/og-image.jpg
 ```
 
 Expected: PNG image data, 1200 x 630
@@ -146,7 +153,7 @@ Expected: PNG image data, 1200 x 630
 **Step 3: Commit**
 
 ```bash
-git add public/og-image.png
+git add public/og-image.jpg
 git commit -m "feat(seo): add Open Graph preview image"
 ```
 
@@ -155,6 +162,7 @@ git commit -m "feat(seo): add Open Graph preview image"
 ### Task 6: Fix manifest.json
 
 **Files:**
+
 - Modify: `public/manifest.json`
 
 **Step 1: Update manifest with correct app info**

@@ -31,7 +31,13 @@ Inject a `<script type="application/ld+json">` in `layout.tsx`:
   "url": "https://akindejuh.netlify.app",
   "jobTitle": "Software Engineer",
   "worksFor": { "@type": "Organization", "name": "Benmore Technologies" },
-  "knowsAbout": ["React Native", "React.js", "Node.js", "TypeScript", "Mobile Development"],
+  "knowsAbout": [
+    "React Native",
+    "React.js",
+    "Node.js",
+    "TypeScript",
+    "Mobile Development"
+  ],
   "sameAs": [
     "https://github.com/akindejuh",
     "https://linkedin.com/in/akindeju-oluwagbemiga-004b95225",
@@ -58,7 +64,8 @@ Sitemap: https://akindejuh.netlify.app/sitemap.xml
 
 ## 5. OG Image
 
-Create a static `public/og-image.png` (1200x630) with:
+Create a static `public/og-image.jpg` (1200x630) with:
+
 - Name: Akindeju Oluwagbemiga
 - Title: Software Engineer
 - Dark theme matching portfolio aesthetic

@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     images: [
       {
-        url: '/og-image.png',
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Akindeju Oluwagbemiga — Software Engineer',
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     description:
       'Software Engineer with 4+ years crafting high-performance mobile & web applications that scale.',
     creator: '@akindejuh',
-    images: ['/og-image.png'],
+    images: ['/og-image.jpg'],
   },
   alternates: {
     canonical: 'https://akindejuh.netlify.app',

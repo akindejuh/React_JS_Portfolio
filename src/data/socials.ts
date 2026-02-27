@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import { ISocials } from '@/interfaces/socials';
 
 export const socials: ISocials[] = [
