@@ -87,6 +87,10 @@ const Hero: React.FC = () => {
           @akindejuh
         </h1>
 
+        <p className="font-space-grotesk-500 text-lg md:text-xl text-[#737373] mt-3">
+          Akindeju Oluwagbemiga
+        </p>
+
         <div
           ref={lineRef}
           className="w-full h-[2px] bg-accent my-6 md:my-8 origin-left"
