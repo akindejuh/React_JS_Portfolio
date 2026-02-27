@@ -5,9 +5,11 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://akindejuh.netlify.app'),
   title: 'Akindeju Oluwagbemiga | Software Engineer — React Native, React.js, Node.js',
   description:
-    'Akindeju Oluwagbemiga is a Software Engineer at Benmore Technologies with 4+ years building scalable mobile and web applications. Shipped 15+ apps to 3M+ users across fintech and enterprise. Specializes in React Native, React.js, Node.js, and TypeScript.',
+    'Akindeju Oluwagbemiga Michael (Michael Akindeju) is a Software Engineer at Benmore Technologies with 4+ years building scalable mobile and web applications. Shipped 15+ apps to 3M+ users across fintech and enterprise. Specializes in React Native, React.js, Node.js, and TypeScript.',
   keywords: [
     'Akindeju',
+    'Michael Akindeju',
+    'Akindeju Oluwagbemiga Michael',
     'Akindeju Oluwagbemiga',
     'akindejuh',
     'Software Engineer Nigeria',
@@ -68,7 +70,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Akindeju Oluwagbemiga',
-  alternateName: 'akindejuh',
+  alternateName: ['akindejuh', 'Michael Akindeju', 'Akindeju Oluwagbemiga Michael', 'Akindeju'],
   url: 'https://akindejuh.netlify.app',
   image: 'https://akindejuh.netlify.app/logo.jpg',
   jobTitle: 'Software Engineer',
