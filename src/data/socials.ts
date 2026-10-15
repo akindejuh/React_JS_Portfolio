@@ -18,13 +18,13 @@ export const socials: ISocials[] = [
   // },
   {
     social: 'X (Twitter)',
-    link: 'https://twitter.com/akindejuh',
+    link: 'https://x.com/akindejuh',
     display: '@akindejuh',
   },
   {
     social: 'LinkedIn',
-    link: 'http://linkedin.com/in/akindeju-oluwagbemiga-004b95225',
-    display: 'Akindeju Oluwagbemiga',
+    link: 'https://linkedin.com/in/michael-akindeju-004b95225',
+    display: 'Michael Akindeju',
   },
   // {
   //   social: 'Mobile',

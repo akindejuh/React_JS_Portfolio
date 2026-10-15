@@ -40,7 +40,7 @@ Inject a `<script type="application/ld+json">` in `layout.tsx`:
   ],
   "sameAs": [
     "https://github.com/akindejuh",
-    "https://linkedin.com/in/akindeju-oluwagbemiga-004b95225",
+    "https://linkedin.com/in/michael-akindeju-004b95225",
     "https://twitter.com/akindejuh",
     "https://instagram.com/akindejuh"
   ]
