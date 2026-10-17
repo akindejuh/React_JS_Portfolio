@@ -47,6 +47,15 @@ export default function Method() {
             </span>
           ))}
         </p>
+
+        <div className={s.toolbox}>
+          <h3>Toolbox</h3>
+          <ul>
+            {method.toolbox.map(t => (
+              <li key={t}>{t}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

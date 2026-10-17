@@ -22,3 +22,30 @@
     will-change: opacity;
   }
 }
+
+.toolbox {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 16px 32px;
+  margin-top: clamp(56px, 8vw, 104px);
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+
+  h3 {
+    font-size: 1.0625rem;
+    font-weight: 600;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+    color: var(--fg-2);
+    font-size: 1.0625rem;
+  }
+
+  @media (max-width: 760px) {
+    grid-template-columns: 1fr;
+  }
+}
