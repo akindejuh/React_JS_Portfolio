@@ -73,8 +73,13 @@ export const experiences: IExperience[] = [
   },
 ];
 
+// Two chapters at one school: a field switch, and a higher finish.
 export const education = {
   school: 'Federal University of Technology, Akure',
-  degree: 'B.Sc. Software Engineering',
-  grade: '4.65 CGPA',
+  story:
+    'I started at FUTA in 2018 in Meteorology and Climate Science and held a 4.50. In 2023 I switched to Software Engineering, rebuilt from the ground up, and graduated in 2026 with a 4.65.',
+  steps: [
+    { years: '2018 to 2023', field: 'Meteorology and Climate Science', grade: '4.50', note: 'where I started' },
+    { years: '2023 to 2026', field: 'B.Sc. Software Engineering', grade: '4.65', note: 'switched fields and finished higher' },
+  ],
 };

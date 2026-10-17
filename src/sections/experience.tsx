@@ -68,13 +68,25 @@ export default function Experience() {
           })}
         </ul>
         <div className={s.edu}>
-          <span className={s.period}>Education</span>
-          <span className={s.who}>
-            <span className={s.school}>{education.school}</span>
-            <span className={s.role}>
-              {education.degree}, {education.grade}
-            </span>
-          </span>
+          <div className={s.eduHead}>
+            <h3 className={s.eduTitle}>Education</h3>
+            <p className={s.school}>{education.school}</p>
+            <p className={s.story}>{education.story}</p>
+          </div>
+          <ol className={s.steps}>
+            {education.steps.map(st => (
+              <li key={st.field}>
+                <p className={s.grade}>
+                  {st.grade}
+                  <span>/5.00</span>
+                </p>
+                <p className={s.field}>{st.field}</p>
+                <p className={s.period}>
+                  {st.years}, {st.note}
+                </p>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>
