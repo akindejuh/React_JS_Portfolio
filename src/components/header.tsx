@@ -29,7 +29,7 @@ export default function Header() {
           {profile.name}
         </a>
         <nav className={styles.nav} aria-label="Sections">
-          {links.map((l) => (
+          {links.map(l => (
             <a key={l.href} href={l.href}>
               {l.label}
             </a>

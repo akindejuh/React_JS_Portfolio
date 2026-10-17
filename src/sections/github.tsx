@@ -10,11 +10,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 const fmt = (n: number) => n.toLocaleString('en-US');
 const peak = Math.max(...github.years.map(y => y.total));
-const updated = new Date(`${github.updated}T12:00:00Z`).toLocaleDateString('en-US', {
-  month: 'short',
-  day: 'numeric',
-  year: 'numeric',
-});
+const updated = new Date(`${github.updated}T12:00:00Z`).toLocaleDateString(
+  'en-US',
+  {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  },
+);
 
 // The public record: contributions per year, then the last 12 months day by day.
 export default function GitHub() {
@@ -31,7 +34,12 @@ export default function GitHub() {
             scaleX: 1,
             ease: 'none',
             stagger: 0.12,
-            scrollTrigger: { trigger: '[data-years]', start: 'top 85%', end: 'bottom 55%', scrub: 0.6 },
+            scrollTrigger: {
+              trigger: '[data-years]',
+              start: 'top 85%',
+              end: 'bottom 55%',
+              scrub: 0.6,
+            },
           },
         );
         // the year lights up in a wave, left to right
@@ -42,8 +50,18 @@ export default function GitHub() {
             opacity: 1,
             scale: 1,
             ease: 'none',
-            stagger: { each: 0.002, grid: [7, github.weeks.length], axis: 'x', from: 'start' },
-            scrollTrigger: { trigger: '[data-grid]', start: 'top 90%', end: 'bottom 60%', scrub: 0.6 },
+            stagger: {
+              each: 0.002,
+              grid: [7, github.weeks.length],
+              axis: 'x',
+              from: 'start',
+            },
+            scrollTrigger: {
+              trigger: '[data-grid]',
+              start: 'top 90%',
+              end: 'bottom 60%',
+              scrub: 0.6,
+            },
           },
         );
       });
@@ -56,7 +74,8 @@ export default function GitHub() {
       <div className="wrap">
         <h2 className="h2">The commit record.</h2>
         <p className={`lead ${s.lead}`}>
-          {fmt(github.total)} contributions since 2022, most of them in private client repos. GitHub counts them all.
+          {fmt(github.total)} contributions since 2022, most of them in private
+          client repos. GitHub counts them all.
         </p>
 
         <ol data-years className={s.years}>
@@ -64,7 +83,11 @@ export default function GitHub() {
             <li key={y.year}>
               <span className={s.year}>{y.year}</span>
               <span className={s.track}>
-                <span data-bar className={s.bar} style={{ width: `${(y.total / peak) * 100}%` }} />
+                <span
+                  data-bar
+                  className={s.bar}
+                  style={{ width: `${(y.total / peak) * 100}%` }}
+                />
               </span>
               <span className={s.count}>{fmt(y.total)}</span>
             </li>
@@ -83,13 +106,23 @@ export default function GitHub() {
             aria-label={`${fmt(github.lastYear)} contributions in the last 12 months`}>
             {github.weeks.map((week, w) =>
               week.map((level, d) => (
-                <i key={`${w}-${d}`} data-cell className={s.cell} data-level={level} data-old={w < github.weeks.length - 26 || undefined} />
+                <i
+                  key={`${w}-${d}`}
+                  data-cell
+                  className={s.cell}
+                  data-level={level}
+                  data-old={w < github.weeks.length - 26 || undefined}
+                />
               )),
             )}
           </div>
           <p className={s.note}>
-            Snapshot from GitHub on {updated}, across {github.repos} repositories.{' '}
-            <a href="https://github.com/akindejuh" target="_blank" rel="noreferrer">
+            Snapshot from GitHub on {updated}, across {github.repos}{' '}
+            repositories.{' '}
+            <a
+              href="https://github.com/akindejuh"
+              target="_blank"
+              rel="noreferrer">
               See the profile
             </a>
           </p>

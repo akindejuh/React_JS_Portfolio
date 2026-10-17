@@ -6,7 +6,8 @@ import { featuredProjects } from '@/data/projects';
 import { allProjects } from '@/data/all-projects';
 import s from './work.module.scss';
 
-const DRIVE = 'https://drive.google.com/drive/folders/1SD5sdFNxNp5S2xUbo-WELoOTaHUaDt5u?usp=drive_link';
+const DRIVE =
+  'https://drive.google.com/drive/folders/1SD5sdFNxNp5S2xUbo-WELoOTaHUaDt5u?usp=drive_link';
 
 const filters = [
   { key: 'all', label: 'All' },
@@ -22,7 +23,9 @@ const isLink = (href: string) => href && href !== '#';
 export default function Work() {
   const [filter, setFilter] = useState<FilterKey>('all');
   const [archive, setArchive] = useState(false);
-  const shown = featuredProjects.filter((p) => filter === 'all' || p.category === filter);
+  const shown = featuredProjects.filter(
+    p => filter === 'all' || p.category === filter,
+  );
 
   return (
     <section id="work" className={s.work}>
@@ -30,18 +33,28 @@ export default function Work() {
         <div className={s.head}>
           <h2 className="h2">Selected work.</h2>
           <LayoutGroup id="filters">
-            <div className={s.filters} role="tablist" aria-label="Filter projects">
-              {filters.map((f) => (
+            <div
+              className={s.filters}
+              role="tablist"
+              aria-label="Filter projects">
+              {filters.map(f => (
                 <button
                   key={f.key}
                   type="button"
                   role="tab"
                   aria-selected={filter === f.key}
                   className={s.filter}
-                  onClick={() => setFilter(f.key)}
-                >
+                  onClick={() => setFilter(f.key)}>
                   {filter === f.key && (
-                    <motion.span layoutId="pill" className={s.pill} transition={{ type: 'spring', stiffness: 420, damping: 36 }} />
+                    <motion.span
+                      layoutId="pill"
+                      className={s.pill}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 420,
+                        damping: 36,
+                      }}
+                    />
                   )}
                   <span className={s.filterLabel}>{f.label}</span>
                 </button>
@@ -52,7 +65,7 @@ export default function Work() {
 
         <motion.ul layout className={s.rows}>
           <AnimatePresence mode="popLayout" initial={false}>
-            {shown.map((p) => {
+            {shown.map(p => {
               const Tag = isLink(p.link) ? motion.a : motion.div;
               return (
                 <motion.li
@@ -61,16 +74,18 @@ export default function Work() {
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                >
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}>
                   <Tag
                     className={s.row}
-                    {...(isLink(p.link) ? { href: p.link, target: '_blank', rel: 'noreferrer' } : {})}
-                  >
+                    {...(isLink(p.link)
+                      ? { href: p.link, target: '_blank', rel: 'noreferrer' }
+                      : {})}>
                     <span className={s.name}>{p.name}</span>
                     <span className={s.desc}>{p.description}</span>
                     <span className={s.stack}>{p.stack.join(', ')}</span>
-                    {isLink(p.link) && <span className={s.arrow} aria-hidden="true" />}
+                    {isLink(p.link) && (
+                      <span className={s.arrow} aria-hidden="true" />
+                    )}
                   </Tag>
                 </motion.li>
               );
@@ -79,16 +94,28 @@ export default function Work() {
         </motion.ul>
 
         <div className={s.archiveHead}>
-          <button type="button" className="btn btn-ghost" aria-expanded={archive} onClick={() => setArchive(!archive)}>
+          <button
+            type="button"
+            className="btn btn-ghost"
+            aria-expanded={archive}
+            onClick={() => setArchive(!archive)}>
             {archive ? 'Hide the archive' : 'Show everything else'}
           </button>
           <p className="muted">
             Store apps, side projects and APKs on{' '}
-            <a href={DRIVE} target="_blank" rel="noreferrer" className={s.inline}>
+            <a
+              href={DRIVE}
+              target="_blank"
+              rel="noreferrer"
+              className={s.inline}>
               Google Drive
             </a>{' '}
             and{' '}
-            <a href="https://github.com/akindejuh" target="_blank" rel="noreferrer" className={s.inline}>
+            <a
+              href="https://github.com/akindejuh"
+              target="_blank"
+              rel="noreferrer"
+              className={s.inline}>
               GitHub
             </a>
             .
@@ -103,14 +130,13 @@ export default function Work() {
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className={s.archiveWrap}
-            >
+              className={s.archiveWrap}>
               <div className={s.archive}>
-                {allProjects.map((cat) => (
+                {allProjects.map(cat => (
                   <div key={cat.category} className={s.cat}>
                     <h3>{cat.category}</h3>
                     <ul>
-                      {cat.projects.map((p) => (
+                      {cat.projects.map(p => (
                         <li key={p.name}>
                           {isLink(p.link) ? (
                             <a href={p.link} target="_blank" rel="noreferrer">

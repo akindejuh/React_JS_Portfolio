@@ -23,7 +23,12 @@ export default function Method() {
             opacity: 1,
             ease: 'none',
             stagger: 0.05,
-            scrollTrigger: { trigger: '[data-statement]', start: 'top 78%', end: 'bottom 45%', scrub: true },
+            scrollTrigger: {
+              trigger: '[data-statement]',
+              start: 'top 78%',
+              end: 'bottom 45%',
+              scrub: true,
+            },
           },
         );
       });
@@ -44,7 +49,7 @@ export default function Method() {
         </p>
 
         <dl className={s.principles}>
-          {method.principles.map((p) => (
+          {method.principles.map(p => (
             <div key={p.title}>
               <dt>{p.title}</dt>
               <dd>{p.text}</dd>
@@ -55,7 +60,7 @@ export default function Method() {
         <div className={s.toolbox}>
           <h3>Toolbox</h3>
           <ul>
-            {method.toolbox.map((t) => (
+            {method.toolbox.map(t => (
               <li key={t}>{t}</li>
             ))}
           </ul>

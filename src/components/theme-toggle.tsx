@@ -9,7 +9,9 @@ export default function ThemeToggle() {
   const [theme, setTheme] = useState<Theme | null>(null);
 
   useEffect(() => {
-    setTheme(document.documentElement.dataset.theme === 'light' ? 'light' : 'dark');
+    setTheme(
+      document.documentElement.dataset.theme === 'light' ? 'light' : 'dark',
+    );
   }, []);
 
   const flip = () => {
@@ -30,20 +32,42 @@ export default function ThemeToggle() {
       className={styles.toggle}
       onClick={flip}
       aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
-      aria-pressed={dark}
-    >
+      aria-pressed={dark}>
       <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
         <mask id="moon-cut">
           <rect width="24" height="24" fill="#fff" />
-          <circle className={styles.cut} cx={dark ? 17 : 30} cy={dark ? 7 : -6} r="7" fill="#000" />
+          <circle
+            className={styles.cut}
+            cx={dark ? 17 : 30}
+            cy={dark ? 7 : -6}
+            r="7"
+            fill="#000"
+          />
         </mask>
-        <circle cx="12" cy="12" r={dark ? 8.5 : 5} fill="currentColor" mask="url(#moon-cut)" className={styles.core} />
-        <g className={styles.rays} style={{ opacity: dark ? 0 : 1, transform: dark ? 'rotate(-45deg) scale(.6)' : 'none' }}>
+        <circle
+          cx="12"
+          cy="12"
+          r={dark ? 8.5 : 5}
+          fill="currentColor"
+          mask="url(#moon-cut)"
+          className={styles.core}
+        />
+        <g
+          className={styles.rays}
+          style={{
+            opacity: dark ? 0 : 1,
+            transform: dark ? 'rotate(-45deg) scale(.6)' : 'none',
+          }}>
           {Array.from({ length: 8 }, (_, i) => (
             <line
               key={i}
-              x1="12" y1="1.5" x2="12" y2="4"
-              stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+              x1="12"
+              y1="1.5"
+              x2="12"
+              y2="4"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
               transform={`rotate(${i * 45} 12 12)`}
             />
           ))}
