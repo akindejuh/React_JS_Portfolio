@@ -1,41 +1,28 @@
-'use client';
-
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-import { useLenis } from '@/hooks/useLenis';
+import SmoothScroll from '@/components/smooth-scroll';
 import Header from '@/components/header';
-import CustomCursor from '@/components/cursor';
-import ScrollProgress from '@/components/scroll-progress';
 import Hero from '@/sections/hero';
-import About from '@/sections/about';
+import Numbers from '@/sections/numbers';
+import Woju from '@/sections/woju';
+import Method from '@/sections/method';
 import Experience from '@/sections/experience';
-import Projects from '@/sections/projects';
-import Skills from '@/sections/skills';
+import Work from '@/sections/work';
 import Contact from '@/sections/contact';
 
+// The page runs like a keynote: who, the numbers, the product, how, the record, the ask.
 export default function Home() {
-  useLenis();
-
   return (
     <>
-      <CustomCursor />
-      <ScrollProgress />
-      <div className="grain-overlay" />
+      <SmoothScroll />
       <Header />
       <main>
         <Hero />
-        <About />
+        <Numbers />
+        <Woju />
+        <Method />
         <Experience />
-        <Projects />
-        <Skills />
+        <Work />
         <Contact />
       </main>
-      <ToastContainer
-        position="bottom-right"
-        theme="dark"
-        toastStyle={{ backgroundColor: '#111111', color: '#e5e5e5' }}
-      />
     </>
   );
 }

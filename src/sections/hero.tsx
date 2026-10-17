@@ -1,132 +1,99 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import SplitType from 'split-type';
-import { useMagnetic } from '@/hooks/useMagnetic';
+import { useLayoutEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { profile } from '@/data/profile';
+import s from './hero.module.scss';
 
-const Hero: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const nameRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const lineRef = useRef<HTMLDivElement>(null);
-  const ctaRef = useMagnetic(0.35);
-  const scrollIndicatorRef = useRef<HTMLDivElement>(null);
+gsap.registerPlugin(ScrollTrigger);
 
-  useEffect(() => {
+const lines = ['Michael', 'Akindeju.'];
+
+export default function Hero() {
+  const root = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      const nameSplit = new SplitType(nameRef.current!, { types: 'chars' });
-      const subtitleSplit = new SplitType(subtitleRef.current!, { types: 'words' });
+      const mm = gsap.matchMedia();
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        // the one orchestrated moment: the name builds itself
+        gsap.from('[data-char]', {
+          yPercent: 115,
+          opacity: 0,
+          filter: 'blur(14px)',
+          duration: 1.3,
+          ease: 'expo.out',
+          stagger: 0.035,
+          delay: 0.1,
+        });
+        gsap.from('[data-rise]', { y: 28, opacity: 0, duration: 1.1, ease: 'expo.out', stagger: 0.09, delay: 0.75 });
 
-      const tl = gsap.timeline({ delay: 0.5 });
-
-      tl.from(nameSplit.chars, {
-        y: 120,
-        opacity: 0,
-        rotateX: -90,
-        stagger: 0.04,
-        duration: 1,
-        ease: 'power4.out',
+        // the portrait opens from a card to the full frame
+        const stage = { trigger: '[data-stage]', start: 'top top', end: 'bottom bottom', scrub: true };
+        gsap.fromTo(
+          '[data-portrait]',
+          { clipPath: 'inset(16% 24% 16% 24% round 36px)' },
+          { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none', scrollTrigger: stage },
+        );
+        gsap.fromTo('[data-portrait] img', { scale: 1.25 }, { scale: 1, ease: 'none', scrollTrigger: stage });
+        gsap.fromTo(
+          '[data-caption]',
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, ease: 'none', scrollTrigger: { trigger: '[data-stage]', start: '45% top', end: '80% top', scrub: true } },
+        );
       });
-
-      tl.from(lineRef.current, {
-        scaleX: 0,
-        duration: 0.8,
-        ease: 'power3.inOut',
-      }, '-=0.4');
-
-      tl.from(subtitleSplit.words, {
-        y: 40,
-        opacity: 0,
-        stagger: 0.06,
-        duration: 0.6,
-        ease: 'power3.out',
-      }, '-=0.3');
-
-      tl.from(ctaRef.current, {
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        ease: 'power3.out',
-      }, '-=0.2');
-
-      tl.from(scrollIndicatorRef.current, {
-        opacity: 0,
-        duration: 0.5,
-      }, '-=0.1');
-
-      return () => {
-        nameSplit.revert();
-        subtitleSplit.revert();
-      };
-    }, containerRef);
-
+    }, root);
     return () => ctx.revert();
   }, []);
 
-  const scrollToAbout = () => {
-    const el = document.getElementById('about');
-    if (el) {
-      const y = el.getBoundingClientRect().top + window.scrollY - 80;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section
-      ref={containerRef}
-      id="hero"
-      className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 max-w-[1400px] mx-auto"
-    >
-      <div className="mt-20">
-        <h1
-          ref={nameRef}
-          className="font-space-grotesk-700 text-hero text-white leading-[0.95] tracking-tight"
-          style={{ perspective: '500px' }}
-        >
-          @akindejuh
-        </h1>
-
-        <p className="font-space-grotesk-500 text-lg md:text-xl text-[#737373] mt-3">
-          Akindeju Oluwagbemiga
-        </p>
-
-        <div
-          ref={lineRef}
-          className="w-full h-[2px] bg-accent my-6 md:my-8 origin-left"
-        />
-
-        <p
-          ref={subtitleRef}
-          className="font-space-grotesk-500 text-body-lg text-[#737373] max-w-2xl"
-        >
-          Software Engineer crafting high-performance mobile &amp; web applications
-          that scale. Building at Benmore Technologies.
-        </p>
-
-        <button
-          ref={ctaRef as React.RefObject<HTMLButtonElement>}
-          onClick={scrollToAbout}
-          className="magnetic-btn mt-10 md:mt-14 px-10 py-5 border border-accent text-accent font-space-grotesk-700 text-sm uppercase tracking-widest rounded-full hover:bg-accent hover:text-white transition-all duration-500"
-          data-cursor-hover
-        >
-          Explore My Work
-        </button>
-      </div>
-
-      <div
-        ref={scrollIndicatorRef}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="font-space-grotesk text-xs text-[#737373] uppercase tracking-widest">
-          Scroll
-        </span>
-        <div className="w-[1px] h-12 bg-[#737373]/30 relative overflow-hidden">
-          <div className="w-full h-4 bg-accent animate-bounce absolute top-0" />
+    <div ref={root}>
+      <section id="top" className={s.hero}>
+        <div className="wrap">
+          <p data-rise className={s.kicker}>
+            {profile.role} at{' '}
+            <a href={profile.companyUrl} target="_blank" rel="noreferrer">
+              {profile.company}
+            </a>
+          </p>
+          <h1 className={s.name} aria-label={profile.name}>
+            {lines.map((line) => (
+              <span key={line} className={s.line} aria-hidden="true">
+                {Array.from(line).map((ch, i) => (
+                  <span key={i} data-char className={s.char}>
+                    {ch}
+                  </span>
+                ))}
+              </span>
+            ))}
+          </h1>
+          <div className={s.foot}>
+            <p data-rise className="lead">
+              {profile.intro}
+            </p>
+            <div data-rise className={s.actions}>
+              <a href="#woju" className="btn btn-solid">
+                See what I shipped
+              </a>
+              <a href={profile.cv} className="btn btn-ghost" download>
+                Download CV
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
-  );
-};
+      </section>
 
-export default Hero;
+      <section data-stage className={s.stage} aria-label="Portrait">
+        <div className={s.sticky}>
+          <div data-portrait className={s.frame}>
+            <img src="/images/portrait.jpg" alt="Michael Akindeju" width={1800} height={1908} />
+          </div>
+          <p data-caption className={s.caption}>
+            Based in {profile.location}, building with teams across the US and Africa.
+          </p>
+        </div>
+      </section>
+    </div>
+  );
+}

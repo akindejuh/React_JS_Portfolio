@@ -1,157 +1,196 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+// Apple-neutral system: two themes, one accent (Wòjú coral) that only the
+// product chapter uses. Type is Geist throughout; size and tracking do the work.
 
-* {
+:root,
+:root[data-theme='light'] {
+  --bg: #fbfbfd;
+  --bg-raised: #f5f5f7;
+  --fg: #1d1d1f;
+  --fg-2: #6e6e73;
+  --fg-3: #86868b;
+  --line: rgba(0, 0, 0, 0.1);
+  --glass: rgba(251, 251, 253, 0.72);
+  --shot-light: block;
+  --shot-dark: none;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #000000;
+  --bg-raised: #161617;
+  --fg: #f5f5f7;
+  --fg-2: #a1a1a6;
+  --fg-3: #86868b;
+  --line: rgba(255, 255, 255, 0.14);
+  --glass: rgba(0, 0, 0, 0.62);
+  --shot-light: none;
+  --shot-dark: block;
+  color-scheme: dark;
+}
+
+:root {
+  --coral: #f06c62;
+  --coral-deep: #e2554a;
+  --gutter: clamp(16px, 4vw, 48px);
+  --max: 1200px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --t-display: clamp(3.75rem, 11.5vw, 10.5rem);
+  --t-h2: clamp(2.5rem, 6.4vw, 5.75rem);
+  --t-h3: clamp(1.375rem, 2.4vw, 2rem);
+  --t-lead: clamp(1.25rem, 2.1vw, 1.75rem);
+  --t-body: 1.0625rem;
+  --t-small: 0.875rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
-  background-color: #0a0a0a;
-  color: #e5e5e5;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
 }
 
-body {
-  margin: 0;
-  font-family: 'Space-Grotesk-400', -apple-system, BlinkMacSystemFont, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #0a0a0a;
-  color: #e5e5e5;
-  overflow-x: hidden;
-}
-
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-geist), -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  font-size: var(--t-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  transition: background-color 0.5s var(--ease), color 0.5s var(--ease);
 }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
+img {
+  display: block;
+  max-width: 100%;
 }
 
-.lenis.lenis-stopped {
-  overflow: hidden;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-::selection {
-  background-color: #455CE9;
-  color: #fff;
-}
-
-.grain-overlay {
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  right: -50%;
-  bottom: -50%;
-  width: 200%;
-  height: 200%;
-  background: transparent url('https://www.transparenttextures.com/patterns/noise.png') repeat 0 0;
-  opacity: 0.03;
-  pointer-events: none;
-  z-index: 9999;
-  animation: grain 8s steps(10) infinite;
-}
-
-@keyframes grain {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-5%, -10%); }
-  20% { transform: translate(-15%, 5%); }
-  30% { transform: translate(7%, -25%); }
-  40% { transform: translate(-5%, 25%); }
-  50% { transform: translate(-15%, 10%); }
-  60% { transform: translate(15%, 0%); }
-  70% { transform: translate(0%, 15%); }
-  80% { transform: translate(3%, 35%); }
-  90% { transform: translate(-10%, 10%); }
-}
-
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 2px;
-  background: #455CE9;
-  z-index: 100;
-  transform-origin: left;
-}
-
-.custom-cursor {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 1.5px solid #e5e5e5;
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9998;
-  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
-  mix-blend-mode: difference;
-}
-
-.custom-cursor.hover {
-  width: 60px;
-  height: 60px;
-  background-color: #455CE9;
-  border-color: #455CE9;
-  mix-blend-mode: normal;
-  opacity: 0.5;
-}
-
-.magnetic-btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
   cursor: pointer;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  * {
-    cursor: none !important;
+::selection {
+  background: var(--coral);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: calc(var(--max) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.h2 {
+  font-size: var(--t-h2);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.lead {
+  font-size: var(--t-lead);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--fg-2);
+  max-width: 34ch;
+  text-wrap: pretty;
+}
+
+.muted {
+  color: var(--fg-2);
+}
+
+// Pill buttons, Apple-store style.
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: transform 0.4s var(--ease), background-color 0.3s, color 0.3s, box-shadow 0.3s;
+  will-change: transform;
+
+  &:active {
+    transform: scale(0.97);
   }
 }
 
-@font-face {
-  font-family: 'Space-Grotesk-400';
-  src: url('/fonts/SpaceGrotesk-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+.btn-solid {
+  background: var(--fg);
+  color: var(--bg);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 30px -12px var(--fg-3);
+  }
 }
 
-@font-face {
-  font-family: 'Space-Grotesk-500';
-  src: url('/fonts/SpaceGrotesk-Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
+.btn-ghost {
+  box-shadow: inset 0 0 0 1px var(--line);
+
+  &:hover {
+    background: var(--bg-raised);
+  }
 }
 
-@font-face {
-  font-family: 'Space-Grotesk-700';
-  src: url('/fonts/SpaceGrotesk-Bold.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
+.shot-light {
+  display: var(--shot-light);
 }
 
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.shot-dark {
+  display: var(--shot-dark);
 }
 
-.marquee-track {
-  animation: marquee 30s linear infinite;
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
-.marquee-track:hover {
-  animation-play-state: paused;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

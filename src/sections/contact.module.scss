@@ -1,0 +1,60 @@
+.contact {
+  padding-top: clamp(96px, 14vw, 200px);
+}
+
+.title {
+  font-size: var(--t-display);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+  margin-left: -0.04em;
+  max-width: 9ch;
+}
+
+.lead {
+  margin-top: clamp(20px, 3vw, 36px);
+}
+
+.mailRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin-top: clamp(40px, 6vw, 72px);
+}
+
+.mail {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  word-break: break-all;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.6s var(--ease);
+
+  &:hover {
+    background-size: 100% 2px;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-top: clamp(96px, 14vw, 180px);
+  padding-top: 24px;
+  padding-bottom: 32px;
+  border-top: 1px solid var(--line);
+  font-size: var(--t-small);
+  color: var(--fg-3);
+}

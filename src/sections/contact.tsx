@@ -1,92 +1,58 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import TextReveal from '@/components/text-reveal';
+import { useState } from 'react';
+import { profile } from '@/data/profile';
 import { socials } from '@/data/socials';
+import s from './contact.module.scss';
 
-gsap.registerPlugin(ScrollTrigger);
+export default function Contact() {
+  const [copied, setCopied] = useState(false);
 
-const Contact: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const linksRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const links = linksRef.current?.querySelectorAll('.contact-link');
-      links?.forEach((link, i) => {
-        gsap.from(link, {
-          x: -60,
-          opacity: 0,
-          duration: 0.8,
-          delay: i * 0.1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: linksRef.current,
-            start: 'top 80%',
-          },
-        });
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      window.location.href = `mailto:${profile.email}`;
+    }
+  };
 
   return (
-    <section
-      ref={sectionRef}
-      id="contact"
-      className="py-32 md:py-40 px-6 md:px-12 max-w-[1400px] mx-auto"
-    >
-      <TextReveal element="h2" className="font-space-grotesk-700 text-section text-white mb-4">
-        Let&apos;s Build Together
-      </TextReveal>
+    <section id="contact" className={s.contact}>
+      <div className="wrap">
+        <h2 className={s.title}>Hiring? Let’s talk.</h2>
+        <p className={`lead ${s.lead}`}>
+          Mobile, web or backend, I can own it end to end and ship it fast. Send a note and I will reply within a day.
+        </p>
 
-      <div className="w-16 h-[2px] bg-accent mb-8" />
-
-      <p className="font-space-grotesk text-body-lg text-[#737373] max-w-xl mb-16">
-        I&apos;m always open to discussing new opportunities, interesting projects,
-        or ways to contribute to open-source. Let&apos;s connect.
-      </p>
-
-      <div ref={linksRef} className="space-y-0">
-        {socials.map((social) => (
-          <a
-            key={social.social}
-            href={social.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="contact-link group flex items-center justify-between py-6 border-b border-[#1a1a1a] hover:border-accent/40 transition-all duration-500"
-            data-cursor-hover
-          >
-            <div className="flex items-center gap-6">
-              <span className="font-space-grotesk-700 text-2xl md:text-4xl text-white group-hover:text-accent transition-colors duration-300">
-                {social.social}
-              </span>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="font-space-grotesk text-sm text-[#737373] hidden md:inline group-hover:text-white transition-colors duration-300">
-                {social.display}
-              </span>
-              <svg className="w-5 h-5 text-[#737373] group-hover:text-accent transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M7 17L17 7M17 7H7M17 7V17" />
-              </svg>
-            </div>
+        <div className={s.mailRow}>
+          <a href={`mailto:${profile.email}`} className={s.mail}>
+            {profile.email}
           </a>
-        ))}
+          <button type="button" onClick={copy} className="btn btn-ghost" aria-live="polite">
+            {copied ? 'Copied' : 'Copy email'}
+          </button>
+        </div>
+
+        <div className={s.actions}>
+          <a href={profile.cv} download className="btn btn-solid">
+            Download CV
+          </a>
+          {socials
+            .filter((x) => x.social !== 'Mail')
+            .map((x) => (
+              <a key={x.social} href={x.link} target="_blank" rel="noreferrer" className="btn btn-ghost">
+                {x.social}
+              </a>
+            ))}
+        </div>
       </div>
 
-      <div className="mt-24 pt-8 border-t border-[#1a1a1a] flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="font-space-grotesk text-sm text-[#737373]">
-          Built with React, GSAP &amp; Tailwind
-        </p>
-        <p className="font-space-grotesk text-sm text-[#737373]">
-          &copy; {new Date().getFullYear()} Akindeju Oluwagbemiga
-        </p>
-      </div>
+      <footer className={`wrap ${s.footer}`}>
+        <p>© {new Date().getFullYear()} {profile.fullName}</p>
+        <p>Designed and built by me, with AI agents and a lot of reviewed diffs.</p>
+      </footer>
     </section>
   );
-};
-
-export default Contact;
+}

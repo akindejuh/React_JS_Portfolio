@@ -1,0 +1,343 @@
+.woju {
+  position: relative;
+  padding-bottom: clamp(64px, 10vw, 140px);
+}
+
+// The launch stage.
+.launch {
+  position: relative;
+  height: 280vh;
+
+  @media (prefers-reduced-motion: reduce) {
+    height: auto;
+  }
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  perspective: 1400px;
+
+  @media (prefers-reduced-motion: reduce) {
+    position: relative;
+    height: auto;
+    padding: 120px 0 64px;
+    gap: 48px;
+  }
+}
+
+.glow {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(40% 35% at 50% 45%, rgba(240, 108, 98, 0.55), transparent 70%),
+    radial-gradient(30% 25% at 60% 70%, rgba(226, 85, 74, 0.35), transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.title {
+  position: relative;
+  grid-area: 1 / 1;
+  text-align: center;
+  padding-inline: var(--gutter);
+  will-change: transform;
+}
+
+.icon {
+  width: clamp(64px, 8vw, 96px);
+  height: auto;
+  margin: 0 auto clamp(16px, 2vw, 24px);
+  border-radius: 22%;
+  box-shadow: 0 20px 60px -20px rgba(240, 108, 98, 0.8);
+}
+
+.name {
+  font-size: clamp(5rem, 17vw, 15rem);
+  font-weight: 600;
+  line-height: 0.85;
+  letter-spacing: -0.06em;
+}
+
+.tagline {
+  margin: clamp(16px, 2vw, 28px) auto 0;
+  max-width: 26ch;
+  font-size: var(--t-lead);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--fg-2);
+  text-wrap: balance;
+}
+
+.devices {
+  position: relative;
+  grid-area: 1 / 1;
+  width: min(1040px, 88vw);
+  align-self: end;
+  margin-bottom: clamp(24px, 7vh, 80px);
+  transform-origin: 50% 100%;
+  will-change: transform;
+
+  @media (prefers-reduced-motion: reduce) {
+    grid-area: auto;
+  }
+}
+
+.browser {
+  border-radius: clamp(10px, 1.4vw, 18px);
+  overflow: hidden;
+  background: var(--bg-raised);
+  box-shadow:
+    0 0 0 1px var(--line),
+    0 40px 120px -40px rgba(0, 0, 0, 0.45);
+
+  img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top;
+  }
+}
+
+.chrome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: clamp(26px, 3vw, 38px);
+  padding: 0 14px;
+  background: var(--bg-raised);
+  box-shadow: 0 1px 0 var(--line);
+
+  i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--line);
+  }
+
+  span {
+    margin: 0 auto;
+    padding: 2px 14px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    color: var(--fg-3);
+    background: var(--bg);
+
+    @media (max-width: 600px) {
+      display: none;
+    }
+  }
+}
+
+.phone {
+  position: absolute;
+  right: -2%;
+  bottom: -6%;
+  width: clamp(110px, 22%, 240px);
+  padding: clamp(4px, 0.6vw, 8px);
+  border-radius: clamp(22px, 3vw, 42px);
+  background: #1d1d1f;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 30px 80px -24px rgba(0, 0, 0, 0.6);
+  will-change: transform;
+
+  img {
+    width: 100%;
+    aspect-ratio: 780 / 1310;
+    object-fit: cover;
+    border-radius: clamp(18px, 2.5vw, 34px);
+  }
+}
+
+// Facts and detail.
+.facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: clamp(48px, 8vw, 96px) 0;
+  border-bottom: 1px solid var(--line);
+
+  dt {
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: var(--coral);
+  }
+
+  dd {
+    margin-top: 10px;
+    color: var(--fg-2);
+    max-width: 18ch;
+  }
+
+  @media (max-width: 760px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 16px;
+  }
+}
+
+.detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 8vw, 120px);
+  padding-top: clamp(48px, 8vw, 96px);
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.h3 {
+  font-size: var(--t-h3);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+
+.features {
+  list-style: none;
+
+  li {
+    padding: 16px 0;
+    border-top: 1px solid var(--line);
+    font-size: 1.125rem;
+    letter-spacing: -0.01em;
+  }
+}
+
+.how {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  max-width: 52ch;
+}
+
+.stack {
+  margin-top: 20px;
+  color: var(--fg-2);
+  max-width: 52ch;
+}
+
+.open {
+  margin-top: 32px;
+  background: var(--coral);
+  color: #fff;
+
+  &:hover {
+    background: var(--coral-deep);
+    transform: translateY(-1px);
+  }
+}
+
+// The film strip. Mobile: native horizontal swipe. Desktop: pinned + scrubbed.
+.strip {
+  position: relative;
+  margin-top: clamp(80px, 12vw, 160px);
+}
+
+.stripHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px 48px;
+  flex-wrap: wrap;
+  margin-bottom: clamp(32px, 4vw, 56px);
+}
+
+.bar {
+  display: none;
+}
+
+.track {
+  --edge: max(var(--gutter), calc((100vw - var(--max)) / 2));
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  padding: 0 var(--edge);
+  scroll-padding-inline: var(--edge);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.day {
+  flex: 0 0 min(82vw, 380px);
+  scroll-snap-align: start;
+  padding: 28px;
+  border-radius: 28px;
+  background: var(--bg-raised);
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dayNo {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 600;
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.dayMeta {
+  margin-top: 10px;
+  font-size: var(--t-small);
+  color: var(--fg-3);
+}
+
+.dayTitle {
+  margin-top: auto;
+  padding-top: 32px;
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.dayText {
+  margin-top: 8px;
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+
+.pinned {
+  .stripSticky {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .bar {
+    display: block;
+    margin: 0 max(var(--gutter), calc((100vw - var(--max)) / 2)) 28px;
+    height: 2px;
+    background: var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+
+    span {
+      display: block;
+      height: 100%;
+      background: var(--coral);
+      transform-origin: 0 50%;
+    }
+  }
+
+  .track {
+    overflow: visible;
+    width: max-content;
+    will-change: transform;
+  }
+}

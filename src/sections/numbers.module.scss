@@ -1,0 +1,75 @@
+// Without JS (or with reduced motion) the stats simply stack.
+.numbers {
+  padding: clamp(96px, 14vw, 180px) 0;
+}
+
+.stack {
+  display: grid;
+  gap: clamp(72px, 10vw, 140px);
+}
+
+.value {
+  font-size: clamp(6.5rem, 27vw, 23rem);
+  font-weight: 600;
+  line-height: 0.82;
+  letter-spacing: -0.07em;
+  margin-left: -0.06em;
+  font-variant-numeric: tabular-nums;
+}
+
+.line {
+  margin-top: clamp(16px, 2.4vw, 28px);
+  font-size: var(--t-lead);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--fg-2);
+  max-width: 28ch;
+  text-wrap: pretty;
+
+  strong {
+    color: var(--fg);
+    font-weight: 600;
+  }
+}
+
+.progress {
+  display: none;
+}
+
+// Live: one tall section, a pinned viewport, stats stacked in one place.
+.live {
+  height: calc(var(--n) * 100svh);
+  padding: 0;
+
+  .sticky {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .stack {
+    display: grid;
+    gap: 0;
+  }
+
+  .stat {
+    grid-area: 1 / 1;
+    opacity: 0;
+    will-change: transform, opacity, filter;
+  }
+
+  .progress {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: clamp(24px, 5vh, 48px);
+    font-size: var(--t-small);
+    color: var(--fg-3);
+    font-variant-numeric: tabular-nums;
+  }
+}

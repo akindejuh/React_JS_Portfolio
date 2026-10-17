@@ -1,69 +1,51 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
+import { Geist } from 'next/font/google';
 import './globals.scss';
 
+const geist = Geist({ subsets: ['latin'], variable: '--font-geist', display: 'swap' });
+
+const SITE = 'https://akindejuh.netlify.app';
+const DESCRIPTION =
+  'Michael Akindeju (Akindeju Oluwagbemiga) is a Software Engineer at Benmore Technologies who builds mobile, web and backend products end to end. 4+ years, 15+ apps shipped to 3M+ users, and Wòjú, a video calling and chat app built in two days with AI agents.';
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://akindejuh.netlify.app'),
-  title: 'Akindeju Oluwagbemiga | Software Engineer — React Native, React.js, Node.js',
-  description:
-    'Akindeju Oluwagbemiga Michael (Michael Akindeju) is a Software Engineer at Benmore Technologies with 4+ years building scalable mobile and web applications. Shipped 15+ apps to 3M+ users across fintech and enterprise. Specializes in React Native, React.js, Node.js, and TypeScript.',
+  metadataBase: new URL(SITE),
+  title: 'Michael Akindeju — Software Engineer',
+  description: DESCRIPTION,
   keywords: [
-    'Akindeju',
-    'Michael Akindeju',
-    'Akindeju Oluwagbemiga Michael',
-    'Akindeju Oluwagbemiga',
-    'akindejuh',
-    'Software Engineer Nigeria',
-    'React Native Developer',
-    'React Developer',
-    'Node.js Developer',
-    'TypeScript Developer',
-    'Benmore Technologies',
-    'Mobile App Developer Nigeria',
-    'Full Stack Developer',
+    'Akindeju', 'Michael Akindeju', 'Akindeju Oluwagbemiga Michael', 'Akindeju Oluwagbemiga', 'akindejuh',
+    'Software Engineer Nigeria', 'React Native Developer', 'Full Stack Developer', 'Go Developer',
+    'AI-assisted development', 'Benmore Technologies', 'Wòjú',
   ],
-  authors: [{ name: 'Akindeju Oluwagbemiga', url: 'https://akindejuh.netlify.app' }],
+  authors: [{ name: 'Akindeju Oluwagbemiga', url: SITE }],
   creator: 'Akindeju Oluwagbemiga',
   openGraph: {
     type: 'website',
-    title: 'Akindeju Oluwagbemiga | Software Engineer',
-    description:
-      'Software Engineer with 4+ years crafting high-performance mobile & web applications that scale. React Native, React.js, Node.js, TypeScript.',
-    url: 'https://akindejuh.netlify.app',
-    siteName: 'Akindeju Oluwagbemiga',
+    title: 'Michael Akindeju — Software Engineer',
+    description: 'Mobile, web and backend, shipped fast. AI writes the code; every diff is reviewed by hand.',
+    url: SITE,
+    siteName: 'Michael Akindeju',
     locale: 'en_US',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Akindeju Oluwagbemiga — Software Engineer',
-      },
-    ],
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Michael Akindeju — Software Engineer' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Akindeju Oluwagbemiga | Software Engineer',
-    description:
-      'Software Engineer with 4+ years crafting high-performance mobile & web applications that scale.',
+    title: 'Michael Akindeju — Software Engineer',
+    description: 'Mobile, web and backend, shipped fast. AI writes the code; every diff is reviewed by hand.',
     creator: '@akindejuh',
     images: ['/og-image.jpg'],
   },
-  alternates: {
-    canonical: 'https://akindejuh.netlify.app',
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
-  },
-  icons: {
-    icon: '/logo.ico',
-    apple: '/logo.jpg',
-  },
+  alternates: { canonical: SITE },
+  robots: { index: true, follow: true },
+  icons: { icon: '/logo.png', apple: '/logo.jpg' },
   manifest: '/manifest.json',
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#fbfbfd' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+  ],
 };
 
 const jsonLd = {
@@ -71,46 +53,28 @@ const jsonLd = {
   '@type': 'Person',
   name: 'Akindeju Oluwagbemiga',
   alternateName: ['akindejuh', 'Michael Akindeju', 'Akindeju Oluwagbemiga Michael', 'Akindeju'],
-  url: 'https://akindejuh.netlify.app',
-  image: 'https://akindejuh.netlify.app/logo.jpg',
+  url: SITE,
+  image: `${SITE}/logo.jpg`,
   jobTitle: 'Software Engineer',
-  worksFor: {
-    '@type': 'Organization',
-    name: 'Benmore Technologies',
-  },
-  alumniOf: {
-    '@type': 'CollegeOrUniversity',
-    name: 'Federal University of Technology, Akure',
-  },
-  knowsAbout: [
-    'React Native',
-    'React.js',
-    'Node.js',
-    'TypeScript',
-    'JavaScript',
-    'Mobile App Development',
-    'Web Development',
-  ],
+  worksFor: { '@type': 'Organization', name: 'Benmore Technologies' },
+  alumniOf: { '@type': 'CollegeOrUniversity', name: 'Federal University of Technology, Akure' },
+  knowsAbout: ['React Native', 'React', 'Next.js', 'Node.js', 'Go', 'TypeScript', 'Mobile App Development', 'AI-assisted development'],
   sameAs: [
     'https://github.com/akindejuh',
     'https://linkedin.com/in/michael-akindeju-004b95225',
     'https://twitter.com/akindejuh',
-    'https://instagram.com/akindejuh',
   ],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+// Runs before paint so the chosen theme never flashes.
+const themeScript = `try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='dark'}`;
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={geist.variable} suppressHydrationWarning>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body>{children}</body>
     </html>

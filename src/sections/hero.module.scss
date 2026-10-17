@@ -1,0 +1,116 @@
+.hero {
+  min-height: 100svh;
+  display: flex;
+  align-items: flex-end;
+  padding: 120px 0 clamp(48px, 8vh, 96px);
+}
+
+.kicker {
+  font-size: var(--t-lead);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--fg-2);
+  margin-bottom: clamp(12px, 2vw, 24px);
+
+  a {
+    color: var(--fg);
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s var(--ease);
+
+    &:hover {
+      background-size: 100% 1px;
+    }
+  }
+}
+
+.name {
+  font-size: var(--t-display);
+  font-weight: 600;
+  line-height: 0.86;
+  letter-spacing: -0.065em;
+  margin-left: -0.05em;
+
+  // on phones the name fills the width, like a poster
+  @media (max-width: 600px) {
+    font-size: 21.5vw;
+  }
+}
+
+.line {
+  display: block;
+  overflow: hidden;
+  // room for descenders and the blur while clipped
+  padding: 0.04em 0.06em 0.1em;
+  margin: -0.04em -0.06em -0.1em;
+}
+
+.char {
+  display: inline-block;
+  will-change: transform, filter;
+}
+
+.foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px 48px;
+  margin-top: clamp(32px, 5vw, 64px);
+  flex-wrap: wrap;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+// Portrait: a tall stage with a sticky full-viewport frame inside.
+.stage {
+  position: relative;
+  height: 230vh;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--bg-raised);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 48% 32%;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    inset: 10vh var(--gutter);
+    border-radius: 28px;
+  }
+}
+
+.caption {
+  position: absolute;
+  // lines up with the page column, not the screen edge
+  left: max(var(--gutter), calc((100vw - var(--max)) / 2));
+  right: var(--gutter);
+  bottom: clamp(28px, 6vh, 64px);
+  max-width: 18ch;
+  font-size: var(--t-h3);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #fff;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.35);
+}
