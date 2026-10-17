@@ -47,24 +47,6 @@ export default function Method() {
             </span>
           ))}
         </p>
-
-        <dl className={s.principles}>
-          {method.principles.map(p => (
-            <div key={p.title}>
-              <dt>{p.title}</dt>
-              <dd>{p.text}</dd>
-            </div>
-          ))}
-        </dl>
-
-        <div className={s.toolbox}>
-          <h3>Toolbox</h3>
-          <ul>
-            {method.toolbox.map(t => (
-              <li key={t}>{t}</li>
-            ))}
-          </ul>
-        </div>
       </div>
     </section>
   );

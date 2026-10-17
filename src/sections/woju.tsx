@@ -207,7 +207,7 @@ export default function Woju() {
       <div data-strip className={s.strip}>
         <div className={s.stripSticky}>
           <div className={`wrap ${s.stripHead}`}>
-            <h3 className="h2">Thirteen days, 89 releases.</h3>
+            <h3 className="h2">Thirteen days, 96 releases.</h3>
             <p className="lead">
               Every release shipped with a changelog entry. Here is how the
               product grew.

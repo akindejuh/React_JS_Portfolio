@@ -38,48 +38,4 @@ export const stats = [
 export const method = {
   statement:
     'I treat AI as my engineering team. I write the spec, agents write the code, and I review every diff myself before it merges. That is how Wòjú went from an empty repo to video calls, chat and notifications in two days, and how I keep shipping production code at a pace that used to take a whole team.',
-  principles: [
-    {
-      title: 'Spec before code',
-      text: 'Every feature starts as a written design: what it does, what it must never do, and how we will know it works.',
-    },
-    {
-      title: 'Every diff, read by a human',
-      text: 'Agents write fast. I read every line they produce, push back, and only merge what I would sign my name to.',
-    },
-    {
-      title: 'Tests are the gate',
-      text: 'Nothing ships on vibes. Each change lands with the check that would catch it breaking, backend to mobile.',
-    },
-    {
-      title: 'Release daily',
-      text: 'Small, reviewed releases with a changelog entry for each one. Wòjú shipped 89 of them in its first 13 days.',
-    },
-  ],
-  toolbox: [
-    'TypeScript',
-    'React Native',
-    'React',
-    'Next.js',
-    'Node.js',
-    'Go',
-    'PostgreSQL',
-    'Swift',
-    'Kotlin',
-    'Flutter',
-    'Python',
-    'Django',
-    'Redis',
-    'AWS',
-    'GCP',
-    'WebRTC',
-    'GraphQL',
-    'Firebase',
-    'Docker',
-    'Claude Code',
-    'AI agents',
-    'App Store Connect',
-    'Google Play Console',
-    'Figma',
-  ],
 };

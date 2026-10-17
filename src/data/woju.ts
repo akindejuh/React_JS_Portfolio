@@ -5,7 +5,7 @@ export const woju = {
     'Video calls, group calls and encrypted chat with the people you know.',
   facts: [
     { value: '2 days', label: 'to a working v1' },
-    { value: '89', label: 'releases in 13 days' },
+    { value: '96', label: 'releases in 13 days' },
     { value: '3', label: 'platforms: web, iOS, Android' },
     { value: '1', label: 'engineer, with AI agents' },
   ],
@@ -14,6 +14,7 @@ export const woju = {
     'End-to-end encrypted chat, voice notes, replies and reactions',
     'View once: any message, seen one time, then deleted everywhere',
     'Vibez, the status feed, with likes and comments',
+    'Sparks: earn them as you chat, call and post',
     'Shuffle, to meet someone new',
     'An admin dashboard with milestones and an audit log',
   ],
@@ -92,8 +93,8 @@ export const wojuDays = [
   {
     day: 13,
     date: 'Oct 17',
-    versions: '1.44',
-    title: 'View once',
-    text: 'Seen one time, then gone, including the file on our storage.',
+    versions: '1.44 to 1.45',
+    title: 'Simpler, and private',
+    text: 'View once for any message, and points became Sparks while streaks went away.',
   },
 ];
