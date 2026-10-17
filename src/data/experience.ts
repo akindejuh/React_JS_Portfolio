@@ -70,6 +70,7 @@ export const experiences: IExperience[] = [
       'Built Mira, a restaurant management app later acquired by Chowdeck, increasing restaurant efficiency by 42%',
     ],
     companyColor: '#8B5CF6',
+    website: 'https://provenier.com',
   },
 ];
 
