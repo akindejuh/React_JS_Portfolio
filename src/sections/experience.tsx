@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { experiences } from '@/data/experience';
+import { education, experiences } from '@/data/experience';
 import s from './experience.module.scss';
 
 export default function Experience() {
@@ -22,14 +22,16 @@ export default function Experience() {
                   className={s.row}
                   aria-expanded={isOpen}
                   aria-controls={`xp-${i}`}
-                  onClick={() => setOpen(isOpen ? -1 : i)}
-                >
+                  onClick={() => setOpen(isOpen ? -1 : i)}>
                   <span className={s.period}>{e.period}</span>
                   <span className={s.who}>
                     <span className={s.company}>{e.company}</span>
                     <span className={s.role}>{e.role}</span>
                   </span>
-                  <span className={`${s.plus} ${isOpen ? s.plusOpen : ''}`} aria-hidden="true" />
+                  <span
+                    className={`${s.plus} ${isOpen ? s.plusOpen : ''}`}
+                    aria-hidden="true"
+                  />
                 </button>
                 <AnimatePresence initial={false}>
                   {isOpen && (
@@ -40,17 +42,20 @@ export default function Experience() {
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                      className={s.bodyWrap}
-                    >
+                      className={s.bodyWrap}>
                       <div className={s.body}>
                         <p className={s.desc}>{e.description}</p>
                         <ul className={s.highlights}>
-                          {e.highlights.map((h) => (
+                          {e.highlights.map(h => (
                             <li key={h}>{h}</li>
                           ))}
                         </ul>
                         {e.website && (
-                          <a href={e.website} target="_blank" rel="noreferrer" className={s.site}>
+                          <a
+                            href={e.website}
+                            target="_blank"
+                            rel="noreferrer"
+                            className={s.site}>
                             Visit {e.company}
                           </a>
                         )}
@@ -62,6 +67,15 @@ export default function Experience() {
             );
           })}
         </ul>
+        <div className={s.edu}>
+          <span className={s.period}>Education</span>
+          <span className={s.who}>
+            <span className={s.school}>{education.school}</span>
+            <span className={s.role}>
+              {education.degree}, {education.grade}
+            </span>
+          </span>
+        </div>
       </div>
     </section>
   );

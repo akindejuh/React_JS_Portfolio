@@ -25,7 +25,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "github": "node scripts/github-stats.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

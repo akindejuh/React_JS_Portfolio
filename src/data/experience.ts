@@ -9,16 +9,19 @@ export interface IExperience {
   website?: string;
 }
 
+// From public/pdfs/Akindeju_CV.pdf; keep the two in sync.
 export const experiences: IExperience[] = [
   {
     company: 'Benmore Technologies',
     initials: 'BT',
-    role: 'Software Engineer',
-    period: '2025 - Present',
-    description: 'AI-powered custom software development company helping 100+ companies deploy software the right way.',
+    role: 'Senior Software Engineer (Full Stack)',
+    period: 'Nov 2025 - Present',
+    description:
+      'AI-powered custom software development company helping 100+ companies deploy software the right way.',
     highlights: [
-      'Building scalable software solutions with AI-powered development workflows',
-      'Collaborating with cross-functional teams across the US and Africa',
+      'Built GO-180, a veteran transition platform with 25+ modules across employment, financial, housing, insurance and more',
+      'Migrated the platform from Heroku to AWS (VPC, RDS, Redis, S3, EC2) with zero-downtime CI/CD, cutting costs by 58%',
+      'Created custom agent skills and orchestrated AI agents to speed up delivery, with rigorous code review to hold production standards',
     ],
     companyColor: '#2563EB',
     website: 'https://benmore.tech',
@@ -27,13 +30,14 @@ export const experiences: IExperience[] = [
     company: 'Lendsqr',
     initials: 'LQ',
     role: 'Software Engineer (Mobile & Frontend)',
-    period: 'Aug 2024 - 2025',
-    description: "Nigeria's leading digital lending platform serving millions of users across the lending ecosystem.",
+    period: 'Aug 2024 - Nov 2025',
+    description:
+      "Nigeria's leading digital lending platform serving millions of users across the lending ecosystem.",
     highlights: [
-      'Managed 15+ fintech mobile apps serving 3M+ active users',
-      'Migrated SnapCash from Expo to React Native CLI, reducing deployment time by 30%',
-      'Designed configurable form package for customizable loan applications',
-      'Maintained lender web platform with 97% uptime, reduced crashes by 40%',
+      'Managed, maintained and deployed 15+ mobile apps, including Irorun and Andray Finance, serving 3M+ active users',
+      'Moved SnapCash from Expo to React Native CLI for Netcore push notifications, cutting development and deployment time by over 60%',
+      'Kept the primary lender web platform at 100% uptime and reduced app crashes by 40% with a uniform component system',
+      'Built a configurable form package in React Native, then shipped a Flutter version with AI agents in 3 weeks, reviewed to production standard',
     ],
     companyColor: '#349898',
     website: 'https://lendsqr.com',
@@ -43,12 +47,12 @@ export const experiences: IExperience[] = [
     initials: 'AS',
     role: 'Software Engineer (Mobile)',
     period: 'Dec 2024 - Mar 2025',
-    description: 'Quality-as-a-Service product delivery company helping fintech and healthtech teams launch quality products.',
+    description:
+      'Quality-as-a-Service product delivery company helping fintech and healthtech teams launch quality products.',
     highlights: [
-      'Built NorthQuest Financial Application, improving UX by 35%',
-      'Executed React Native framework downgrade, improving stability by 60%',
-      'Redesigned navigation system, reducing user drop-off by 25%',
-      'Achieved 98% transaction success rate for financial operations',
+      'Built the NorthQuest Financial app, improving user experience by 35%',
+      'Led a critical React Native upgrade, improving stability by 60% and cutting build failures by 90%',
+      'Rebuilt navigation, reducing drop-off by 36%, and shipped onboarding and bill payments with a 98% transaction success rate',
     ],
     companyColor: '#38CB89',
     website: 'https://assurdly.com',
@@ -58,13 +62,19 @@ export const experiences: IExperience[] = [
     initials: 'PI',
     role: 'Full Stack Mobile Software Engineer',
     period: 'Nov 2023 - Jul 2024',
-    description: 'AI and data analytics startup transforming the digital landscape with cutting-edge solutions.',
+    description:
+      'AI and data analytics startup transforming the digital landscape with cutting-edge solutions.',
     highlights: [
-      'Enhanced project delivery accuracy by 24% through technical assessments',
-      'Engineered DreamVC investor recommendation system, improving matching by 40%',
-      'Built Mira restaurant app (acquired by Chowdeck), increasing efficiency by 42%',
-      'Drove 15% revenue increase while maintaining 96% client satisfaction',
+      'Led several high-profile projects, driving a 15% revenue increase with 96% client satisfaction',
+      'Engineered DreamVC, an investor recommendation system that improved matching accuracy by 40% and sped up funding by 25%',
+      'Built Mira, a restaurant management app later acquired by Chowdeck, increasing restaurant efficiency by 42%',
     ],
     companyColor: '#8B5CF6',
   },
 ];
+
+export const education = {
+  school: 'Federal University of Technology, Akure',
+  degree: 'B.Sc. Software Engineering',
+  grade: '4.65 CGPA',
+};
