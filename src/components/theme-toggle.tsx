@@ -5,17 +5,17 @@ import styles from './header.module.scss';
 
 type Theme = 'light' | 'dark';
 
-export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme | null>(null);
+// <html data-theme> decides the theme; the button only mirrors it.
+const read = (): Theme =>
+  document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
 
-  useEffect(() => {
-    setTheme(
-      document.documentElement.dataset.theme === 'light' ? 'light' : 'dark',
-    );
-  }, []);
+export default function ThemeToggle() {
+  const [theme, setTheme] = useState<Theme>('dark');
+
+  useEffect(() => setTheme(read()), []);
 
   const flip = () => {
-    const next: Theme = theme === 'dark' ? 'light' : 'dark';
+    const next: Theme = read() === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
     try {
       localStorage.setItem('theme', next);

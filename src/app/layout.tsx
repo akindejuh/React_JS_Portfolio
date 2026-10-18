@@ -106,7 +106,8 @@ const jsonLd = {
 };
 
 // Runs before paint so the chosen theme never flashes.
-const themeScript = `try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='dark'}`;
+// Default is dark; only an explicit saved choice of light overrides it.
+const themeScript = `var t='dark';try{if(localStorage.getItem('theme')==='light')t='light'}catch(e){}document.documentElement.dataset.theme=t`;
 
 export default function RootLayout({
   children,
@@ -114,7 +115,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={geist.variable} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={geist.variable}
+      data-theme="dark"
+      suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script
