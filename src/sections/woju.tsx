@@ -87,7 +87,7 @@ export default function Woju() {
           .to({}, { duration: 0.25 });
       });
 
-      // The 13 days, as a film strip driven by vertical scroll.
+      // The build, as a film strip driven by vertical scroll.
       mm.add(
         '(min-width: 900px) and (prefers-reduced-motion: no-preference)',
         () => {
@@ -144,8 +144,8 @@ export default function Woju() {
             />
             <h2 className={s.name}>Wòjú</h2>
             <p className={s.tagline}>
-              Chat, calls and vibez. Built by one engineer, first version in two
-              days.
+              Games with friends, played in your chats and watched live. Built
+              by one engineer, first version in two days.
             </p>
           </div>
           <div data-devices className={s.devices}>
@@ -187,8 +187,9 @@ export default function Woju() {
           <div>
             <h3 className={s.h3}>How it was built</h3>
             <p className={s.how}>
-              A Go and PostgreSQL backend, a Next.js web app and a React Native
-              app for iOS and Android, all from one repo. I wrote each feature
+              A Go and PostgreSQL backend, a Next.js web app, a React Native app
+              for iOS and Android, and the games themselves, each a small web
+              app the server referees, all from one repo. I wrote each feature
               as a spec, AI agents wrote the code, and every diff was reviewed
               by me before it shipped.
             </p>
@@ -207,7 +208,7 @@ export default function Woju() {
       <div data-strip className={s.strip}>
         <div className={s.stripSticky}>
           <div className={`wrap ${s.stripHead}`}>
-            <h3 className="h2">Thirteen days, 96 releases.</h3>
+            <h3 className="h2">25 days, 143 releases.</h3>
             <p className="lead">
               Every release shipped with a changelog entry. Here is how the
               product grew.

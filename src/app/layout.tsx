@@ -10,7 +10,7 @@ const geist = Geist({
 
 const SITE = 'https://akindejuh.netlify.app';
 const DESCRIPTION =
-  'Michael Akindeju (Akindeju Oluwagbemiga) is a Senior Software Engineer (Full Stack) at Benmore Technologies who builds mobile, web and backend products end to end. 5+ years, 15+ apps shipped to 3M+ users, 2,800+ GitHub contributions, and Wòjú, a video calling and chat app built in two days with AI agents.';
+  'Michael Akindeju (Akindeju Oluwagbemiga) is a Senior Software Engineer (Full Stack) at Benmore Technologies who builds mobile, web and backend products end to end. 5+ years, 15+ apps shipped to 3M+ users, 2,800+ GitHub contributions, and Wòjú, a live games app for playing with friends, first built in two days with AI agents.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
