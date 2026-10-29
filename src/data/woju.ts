@@ -1,6 +1,6 @@
 // Wòjú facts are taken from its git history and changelog.
 export const woju = {
-  url: 'https://agmawoju.netlify.app',
+  url: 'https://usewoju.com',
   tagline:
     'Video calls, group calls and encrypted chat with the people you know.',
   facts: [

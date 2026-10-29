@@ -154,7 +154,7 @@ export default function Woju() {
                 <i />
                 <i />
                 <i />
-                <span>agmawoju.netlify.app</span>
+                <span>usewoju.com</span>
               </div>
               <Shot name="web" alt="Wòjú on the web" />
             </figure>
