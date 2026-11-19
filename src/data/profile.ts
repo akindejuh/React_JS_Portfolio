@@ -7,6 +7,7 @@ export const profile = {
   location: 'Nigeria',
   email: 'akindejuhmikel@gmail.com',
   cv: '/pdfs/Akindeju_CV.pdf',
+  cvExtended: '/pdfs/Michael_Akindeju_Portfolio.pdf',
   intro:
     'I build mobile, web and backend products end to end, and I ship them fast. AI writes most of my code. I write the spec, review every diff by hand, and own everything that goes out.',
 };

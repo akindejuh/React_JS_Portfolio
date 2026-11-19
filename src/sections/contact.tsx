@@ -44,6 +44,9 @@ export default function Contact() {
           <a href={profile.cv} download className="btn btn-solid">
             Download CV
           </a>
+          <a href={profile.cvExtended} download className="btn btn-ghost">
+            Extended CV
+          </a>
           {socials
             .filter(x => x.social !== 'Mail')
             .map(x => (

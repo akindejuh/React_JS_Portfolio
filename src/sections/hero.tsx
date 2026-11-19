@@ -109,6 +109,9 @@ export default function Hero() {
               <a href={profile.cv} className="btn btn-ghost" download>
                 Download CV
               </a>
+              <a href={profile.cvExtended} className="btn btn-ghost" download>
+                Extended CV
+              </a>
             </div>
           </div>
         </div>
